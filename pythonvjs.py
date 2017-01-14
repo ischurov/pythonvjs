@@ -57,7 +57,6 @@ def show(lang, filename):
             if tag._lang and tag._lang.value == lang:
                 return tag
         return get_tag_lang(tree, DEFAULT_LANG)
-    print(tree.find_all('topic'))
     if lang == 'en':
         def translate(s):
             return s
