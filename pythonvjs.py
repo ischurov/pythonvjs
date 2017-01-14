@@ -26,7 +26,7 @@ translations = {
 def show_default():
     return show(DEFAULT_LANG, None)
 
-@app.route("/show/<filename>/<lang>/")
+@app.route("/pythonvjs/show/<filename>/<lang>/")
 def show(lang, filename):
     parser = QqParser()
     parser.allowed_tags.update(allowed_tags)
@@ -69,7 +69,7 @@ def show(lang, filename):
                            tree=tree, topic=topic, translate=translate,
                            mistune=mistune, get_tag_lang=get_tag_lang)
 
-@app.route("/show/<filename>/")
+@app.route("/pythonvjs/show/<filename>/")
 def show_filename(filename):
     return show(DEFAULT_LANG, filename)
 
