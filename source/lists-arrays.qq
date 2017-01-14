@@ -1,0 +1,150 @@
+\topic 
+    \id lists-arrays
+    \heading \lang ru
+        Списки / массивы
+    \heading \lang en
+        Lists / arrays
+    \description \lang ru
+        Стандартная структура данных для хранения нескольких элементов в
+        определённом порядке в Python называется списком (`list`), в JavaScript
+        называется массивом (`Array`). 
+    \description \lang en
+        The basic structure to store several elements in a sequence is called
+        `list` in Python and `Array` in JavaScript.
+    \compare
+        \what \lang ru
+            Создание списка / массива
+        \what \lang en
+            Creation of list / array
+        \python
+            my_list = [3, 2, 10, "Hello"]
+            \out my_list
+        \js
+            var my_array = [3, 2, 10, "Hello"]
+            \out my_array
+    \compare
+        \what \lang ru
+            Доступ по индексу
+        \what \lang en
+            Access by index
+        \python
+            my_list = [3, 2, 10, "Hello"]
+            \out my_list[0]
+            \out my_list[1]
+            \out my_list[-1]
+        \js
+            var my_array = [3, 2, 10, "Hello"]
+            \out my_array[0]
+            \out my_array[1]
+            \out my_array[my_array.length-1]
+    \compare
+        \what \lang ru
+            Изменение значения элемента списка / массива
+        \what \lang en
+            Modification of the value of elements of list / array
+        \python
+            my_list = [3, 2, 10, "Hello"]
+            my_list[0] = 100
+            \out my_list
+        \js
+            var my_array = [3, 2, 10, "Hello"]
+            my_array[0] = 100
+            \out my_array
+    \compare
+        \what \lang ru
+            Длина списка / массива
+        \what \lang en
+            Length of list / array
+        \python
+            my_list = [3, 2, 10, "Hello"]
+            \out len(my_list)
+        \js
+            var my_array = [3, 2, 10, "Hello"]
+            \out my_array.length
+    \compare
+        \what \lang ru
+            Добавление элемента в список / массив
+        \what \lang en
+            Appending element to list / array
+        \python
+            my_list = [3, 2, 10, "Hello"]
+            my_list.append(5)
+            \out my_list
+        \js
+            var my_array = [3, 2, 10, "Hello"]
+            my_array.push(5)
+            \out my_array
+    \compare
+        \what \lang ru
+            Добавление нескольких элементов в список / массив
+        \what \lang en
+            Adding several elements it list / array
+        \python
+            my_list = [3, 2]
+            my_list.extend([12, 20])
+            \out my_list
+        \js
+            var my_array = [3, 2]
+            my_array.push(12, 20)
+            \out my_array
+    \compare
+        \what \lang ru
+            Расширение списка / массива элементами другого списка / массива
+        \what \lang en
+            Extending list / array with elements of another list / array
+        \python
+            my_list = [3, 2, 10, "Hello"]
+            other_list = [1, 2, 3]
+            my_list.extend(other_list)
+            \out my_list
+        \js
+            var my_array = [3, 2, 10, "Hello"]
+            var other_array = [1, 2, 3]
+            my_array.push.apply(my_array, other_array)
+            \out my_array
+            \ref http://stackoverflow.com/a/1374131/3025981
+        \js
+            var my_array = [3, 2, 10, "Hello"]
+            var other = [1, 2, 3]
+            Array.prototype.push.apply(my_array, other)
+            \out my_array
+            \ref http://stackoverflow.com/a/1374131/3025981
+        \js
+            Array.prototype.extend = function (other_array) {
+                /* you should include a test to 
+                 * check whether other_array really 
+                 * is an array */
+                other_array.forEach(function(v) {this.push(v)}, 
+                                    this);    
+            }
+            var my_array = [3, 2, 10, "Hello"]
+            var other_array = [1, 2, 3]
+            my_array.extend(other_array)
+            \out my_array
+            \ref http://stackoverflow.com/a/17368101/3025981
+        \js \require es6
+            var my_array = [3, 2, 10, "Hello"]
+            var other_array = [1, 2, 3]
+            my_array.push(...other_array)
+            my_array
+            \ref 
+                https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator#A_better_push
+            \seealso unpacking
+    \compare
+        \what \lang ru
+            Удаление элемента массива по индексу
+        \what \lang en
+            Remove array element by index
+        \python
+            my_list = [2, 10, 15]
+            del my_list[1]
+            \out my_list
+            \out my_list[1]
+            \out len(my_list)
+        \js
+            var my_array = [2, 10, 15];
+            delete my_array[1];
+            \out my_array
+            \out my_array[1]
+            \out my_array.length
+

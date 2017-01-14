@@ -1,0 +1,134 @@
+{% macro column(codeblocks, prlang) -%}
+{% for codeblock in codeblocks %}
+    {% for item in codeblock %}
+        {% if item.name == '_code' %}
+            <pre><code class="{{ prlang }}">{{ item.text_content }}</code></pre>
+        {% elif item.name == '_output' %}
+            <pre class="output">{{ item.text_content  }}</pre>
+        {% endif %}
+    {% endfor %}
+    {% if codeblock._ref %}
+        <a href="{{ codeblock._ref.value }}" class="ref">{{ translate("source") }}</a>
+    {% endif %}
+    {% if codeblock._require %}
+        <span class="require">{{ translate("require")}}: {{ codeblock._require.value }}</span>
+    {% endif %}
+    {% if not loop.last %}
+        <hr/>
+    {% endif %}
+{% endfor %}
+{%- endmacro %}
+
+<!DOCTYPE html>
+<html lang="{{ lang | default('en')}}">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ get_tag_lang(topic, "heading").text_content }} — python-v-js</title>
+    <style type="text/css">
+        td.what {
+            text-align: center;
+        }
+    </style>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD" crossorigin="anonymous">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    a {
+    color: #3b8bba; /* block-background-text-normal */
+    text-decoration: none;
+}
+    .require {
+        color: #777;
+        font-size: 75%;
+    }
+
+    a.ref {
+       font-size: 75%;
+    }
+
+    p, h1 {
+        margin: 15px 15px;
+    }
+
+    h1.sidebar {
+        font-size: 120%;
+    }
+
+
+a:visited {
+    color: #265778; /* block-normal-text-normal */
+}
+        pre.output {
+           /* background-color:#edffed; */
+            padding: 0em;
+            margin-top: 0em;
+        }
+
+</style>
+
+
+</head>
+<body>
+<div class="pure-g">
+    <div class="pure-u-4-5">
+
+    <h1>
+        {{ get_tag_lang(topic, "heading").text_content }}
+    </h1>
+        {%  if get_tag_lang(topic, "description") %}
+        {{ mistune.markdown(get_tag_lang(topic, "description").text_content) | safe }}
+        {%  endif %}
+<table class="pure-table" style='table-layout: fixed; width:100%;' >
+    {% for compare in topic.find_all("compare") %}
+        {% for what in compare.find_all("what") %}
+           {% if what._lang.value == lang %}
+                <tr>
+                <td colspan="2" class="what">
+                {{ what.text_content }}
+                </td>
+                </tr>
+           {% endif %}
+        {% endfor %}
+        <tr>
+            <td>
+                {{ column(compare.find_all("python"), "python") }}
+            </td>
+            <td>
+                {{ column(compare.find_all("js"), "javascript") }}
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+        </div>
+<div class="pure-u-1-5">
+<h1 class="sidebar"> {{ translate("Language") }}</h1>
+<ul>
+    {% for lng, language in [('en', 'English'), ('ru', 'Russian')] %}
+    <li>
+        <a href="{{ url_for("show", lang=lng, filename=topic._id.value) }}">
+            {{  translate(language) }}
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+<h1 class="sidebar">{{  translate("Topics") }}</h1>
+<ul>
+{% for t in tree.find_all("topic") %}
+    <li>
+<a href="{{ url_for("show", lang=lang, filename=t._id.value) }}">
+    {{ get_tag_lang(t, "heading").text_content }}
+</a>
+    </li>
+
+    {% endfor %}
+    </ul>
+
+</div>
+</div>
+<div style="text-align: center; font-size: 80%; color: #aaaaaa; margin:0.5em;">
+© Ilya V. Schurov | <a href="http://github.com/ischurov/pythonvjs">pythonvjs @ github</a>
+</div>
+</body>
+</html>

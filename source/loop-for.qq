@@ -1,0 +1,67 @@
+\topic 
+    \id loop-for
+    \heading \lang ru
+        Цикл for
+    \heading \lang en
+        For loop
+    \description \lang ru
+        Цикл `for` используется для двух основных целей:
+
+        1. Выполнить некоторое действие заданное число раз.
+        2. Обработать все элементы некоторой структуры данных (например,
+        списка).
+    \description \lang en
+        `for` loop is used mostly for two goals:
+
+        1. Do something given number of times.
+        2. Process all elements of some data structure (e.g. list).
+    \compare
+        \what \lang ru
+            Выполнить блок заданное число раз
+        \what \lang en
+            Do the loop given number of times
+        \python
+            for i in range(4):
+                print("i =", i)
+        \js
+            for(var i=0; i<4; i++) {
+                console.log("i =", i)
+            }
+    \compare
+        \what \lang ru
+            Обработать все элементы списка / массива
+        \what \lang en
+            Process all elements of list / array
+        \python
+            my_list = [1, 2, 10]
+            for element in my_list:
+                print(element)
+        \js
+            var my_array = [1, 2, 10];
+            for (var i=0; i<my_array.length; i++) {
+                console.log(my_array[i])
+            }
+    \compare
+        \what \lang ru
+            Значение переменной цикла после его выполнения
+        \what \lang en
+            Value of loop variable after exit
+        \python
+            for i in range(4):
+                print("Step", i)
+            print("Outside of loop, i =", i)
+        \js
+            for (var i=0; i<4; i++) {
+               console.log("Step", i)
+            }
+            console.log("Outside of loop, i =", i)
+        \js
+            for (let i=0; i<4; i++) {
+               console.log("Step", i)
+            }
+            try { 
+                console.log("Outside of loop, i =", i)
+            } catch(e) {
+                console.log(e)
+            }
+            \require es6
