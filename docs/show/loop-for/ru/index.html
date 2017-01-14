@@ -1,0 +1,341 @@
+
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Цикл for
+ — python-v-js</title>
+    <style type="text/css">
+        td.what {
+            text-align: center;
+        }
+    </style>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD" crossorigin="anonymous">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    a {
+    color: #3b8bba; /* block-background-text-normal */
+    text-decoration: none;
+}
+    .require {
+        color: #777;
+        font-size: 75%;
+    }
+
+    a.ref {
+       font-size: 75%;
+    }
+
+    p, h1 {
+        margin: 15px 15px;
+    }
+
+    h1.sidebar {
+        font-size: 120%;
+    }
+
+
+a:visited {
+    color: #265778; /* block-normal-text-normal */
+}
+        pre.output {
+           /* background-color:#edffed; */
+            padding: 0em;
+            margin-top: 0em;
+        }
+
+</style>
+
+
+</head>
+<body>
+<div class="pure-g">
+    <div class="pure-u-4-5">
+
+    <h1>
+        Цикл for
+
+    </h1>
+        
+        <p>Цикл <code>for</code> используется для двух основных целей:</p>
+<ol>
+<li>Выполнить некоторое действие заданное число раз.</li>
+<li>Обработать все элементы некоторой структуры данных (например,
+списка).</li>
+</ol>
+
+        
+<table class="pure-table" style='table-layout: fixed; width:100%;' >
+    
+        
+           
+                <tr>
+                <td colspan="2" class="what">
+                Выполнить блок заданное число раз
+
+                </td>
+                </tr>
+           
+        
+           
+        
+        <tr>
+            <td>
+                
+    
+        
+            <pre><code class="python">for i in range(4):
+    print(&#34;i =&#34;, i)
+</code></pre>
+        
+    
+        
+            <pre class="output">i = 0
+i = 1
+i = 2
+i = 3
+</pre>
+        
+    
+    
+    
+    
+
+            </td>
+            <td>
+                
+    
+        
+            <pre><code class="javascript">for(var i=0; i&lt;4; i++) {
+    console.log(&#34;i =&#34;, i)
+}</code></pre>
+        
+    
+        
+            <pre class="output">i = 0
+i = 1
+i = 2
+i = 3
+</pre>
+        
+    
+    
+    
+    
+
+            </td>
+        </tr>
+    
+        
+           
+                <tr>
+                <td colspan="2" class="what">
+                Обработать все элементы списка / массива
+
+                </td>
+                </tr>
+           
+        
+           
+        
+        <tr>
+            <td>
+                
+    
+        
+            <pre><code class="python">my_list = [1, 2, 10]
+for element in my_list:
+    print(element)
+</code></pre>
+        
+    
+        
+            <pre class="output">1
+2
+10
+</pre>
+        
+    
+    
+    
+    
+
+            </td>
+            <td>
+                
+    
+        
+            <pre><code class="javascript">var my_array = [1, 2, 10];
+for (var i=0; i&lt;my_array.length; i++) {
+    console.log(my_array[i])
+}</code></pre>
+        
+    
+        
+            <pre class="output">1
+2
+10
+</pre>
+        
+    
+    
+    
+    
+
+            </td>
+        </tr>
+    
+        
+           
+                <tr>
+                <td colspan="2" class="what">
+                Значение переменной цикла после его выполнения
+
+                </td>
+                </tr>
+           
+        
+           
+        
+        <tr>
+            <td>
+                
+    
+        
+            <pre><code class="python">for i in range(4):
+    print(&#34;Step&#34;, i)
+print(&#34;Outside of loop, i =&#34;, i)
+</code></pre>
+        
+    
+        
+            <pre class="output">Step 0
+Step 1
+Step 2
+Step 3
+Outside of loop, i = 3
+</pre>
+        
+    
+    
+    
+    
+
+            </td>
+            <td>
+                
+    
+        
+            <pre><code class="javascript">for (var i=0; i&lt;4; i++) {
+   console.log(&#34;Step&#34;, i)
+}
+console.log(&#34;Outside of loop, i =&#34;, i)</code></pre>
+        
+    
+        
+            <pre class="output">Step 0
+Step 1
+Step 2
+Step 3
+Outside of loop, i = 4
+</pre>
+        
+    
+    
+    
+    
+        <hr/>
+    
+
+    
+        
+    
+        
+            <pre><code class="javascript">for (let i=0; i&lt;4; i++) {
+   console.log(&#34;Step&#34;, i)
+}
+try { 
+    console.log(&#34;Outside of loop, i =&#34;, i)
+} catch(e) {
+    console.log(e)
+}</code></pre>
+        
+    
+        
+            <pre class="output">Step 0
+Step 1
+Step 2
+Step 3
+ReferenceError: i is not defined
+    at [stdin]:5:41
+    at ContextifyScript.Script.runInThisContext (vm.js:26:33)
+    at Object.exports.runInThisContext (vm.js:79:17)
+    at Object.&lt;anonymous&gt; ([stdin]-wrapper:6:22)
+    at Module._compile (module.js:571:32)
+    at Immediate.&lt;anonymous&gt; (bootstrap_node.js:383:29)
+    at runCallback (timers.js:651:20)
+    at tryOnImmediate (timers.js:624:5)
+    at processImmediate [as _immediateCallback] (timers.js:596:5)
+</pre>
+        
+    
+    
+    
+        <span class="require">require: es6</span>
+    
+    
+
+            </td>
+        </tr>
+    
+</table>
+        </div>
+<div class="pure-u-1-5">
+<h1 class="sidebar"> Язык</h1>
+<ul>
+    
+    <li>
+        <a href="/show/loop-for/en/">
+            Английский (English)
+        </a>
+    </li>
+    
+    <li>
+        <a href="/show/loop-for/ru/">
+            Русский (Russian)
+        </a>
+    </li>
+    
+</ul>
+<h1 class="sidebar">Темы</h1>
+<ul>
+
+    <li>
+<a href="/show/lists-arrays/ru/">
+    Списки / массивы
+
+</a>
+    </li>
+
+    
+    <li>
+<a href="/show/loop-for/ru/">
+    Цикл for
+
+</a>
+    </li>
+
+    
+    </ul>
+
+</div>
+</div>
+<div style="text-align: center; font-size: 80%; color: #aaaaaa; margin:0.5em;">
+© Ilya V. Schurov | <a href="http://github.com/ischurov/pythonvjs">pythonvjs @ github</a>
+</div>
+</body>
+</html>
