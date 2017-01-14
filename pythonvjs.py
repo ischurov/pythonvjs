@@ -14,13 +14,15 @@ DEFAULT_LANG = "en"
 allowed_tags = {'about', 'compare', 'what', 'lang',
                 'python', 'js', 'option',
                 'ref', 'seealso', 'out', 'require',
-                'topic', 'heading', 'description', 'id'}
+                'topic', 'heading', 'description', 'id',
+                'comment'}
 
 translations = {
     'Language': 'Язык',
     'Topics': 'Темы',
     'Russian': 'Русский (Russian)',
-    'English': 'Английский (English)'
+    'English': 'Английский (English)',
+    'require': 'требует'
 }
 @app.route("/")
 def show_default():
@@ -53,10 +55,19 @@ def show(lang, filename):
                 prlangtag.extend_children(pr)
 
     def get_tag_lang(tree, tagname):
+        first = None
+        default_lang = None
         for tag in tree.find_all(tagname):
             if tag._lang and tag._lang.value == lang:
                 return tag
-        return get_tag_lang(tree, DEFAULT_LANG)
+            if first is None:
+                first = tag
+            if tag._lang == DEFAULT_LANG and default_lang is None:
+                default_lang = tag
+        if default_lang:
+            return default_lang
+        return first
+
     if lang == 'en':
         def translate(s):
             return s
@@ -131,8 +142,10 @@ def process_python(tag: QqTag):
             with stdout_io() as s:
                 try:
                     exec(child, loc, glob)
-                except:
-                    print("Something wrong with the code:\n" + child)
+                except Exception as e:
+                    print("Exception: {}\n{}".
+                          format(e.__class__.__name__, e))
+
             chunk.append(strip_blank_lines(child)+"\n"),
             if s.getvalue():
                 codeblock.append(QqTag("_code", ["".join(chunk)]))

@@ -7,12 +7,15 @@
             <pre class="output">{{ item.text_content  }}</pre>
         {% endif %}
     {% endfor %}
-    {% if codeblock._ref %}
-        <a href="{{ codeblock._ref.value }}" class="ref">{{ translate("source") }}</a>
-    {% endif %}
-    {% if codeblock._require %}
-        <span class="require">{{ translate("require")}}: {{ codeblock._require.value }}</span>
-    {% endif %}
+    {% for ref in codeblock.find_all("ref") %}
+        <a href="{{ ref.value }}" class="ref">{{ translate("source") }}</a>
+    {% endfor %}
+    {% for require in codeblock.find_all("require") %}
+        <span class="require">{{ translate("require")}}: {{ require.value }}</span>
+    {% endfor %}
+    {%  if codeblock._comment %}
+        <div class="comment">{{ mistune.markdown(get_tag_lang(codeblock, "comment").text_content) | safe }}</div>
+    {%  endif %}
     {% if not loop.last %}
         <hr/>
     {% endif %}
@@ -24,11 +27,6 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ get_tag_lang(topic, "heading").text_content }} — python-v-js</title>
-    <style type="text/css">
-        td.what {
-            text-align: center;
-        }
-    </style>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
     <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD" crossorigin="anonymous">
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
@@ -48,22 +46,62 @@
        font-size: 75%;
     }
 
-    p, h1 {
+    p, h1, h2, h3 {
         margin: 15px 15px;
     }
 
     h1.sidebar {
         font-size: 120%;
     }
+    .comment {
+        color: #555;
+        font-size: 85%;
+        border-left: 10px solid #ddd;
+        background-color: #f7f7f7;
+        margin: 1.5em 0px;
+        padding: 0.01em 0px;
+    }
 
+    .pure-table {
+        border: 0px;
+        table-layout: fixed;
+        width: 100%;
+    }
 
-a:visited {
-    color: #265778; /* block-normal-text-normal */
-}
-        pre.output {
-           /* background-color:#edffed; */
-            padding: 0em;
-            margin-top: 0em;
+    td.what {
+            color: #333;
+            text-align: center;
+            border-top: 1px solid #cbcbcb;
+            padding-top: 1em;
+            font-weight: bold;
+
+        }
+
+    a:visited {
+        color: #265778; /* block-normal-text-normal */
+    }
+
+    pre.output {
+       /* background-color:#edffed; */
+        padding: 0em;
+        margin-top: 0em;
+    }
+
+        a.section-link {
+            color: #aaaaaa;
+        }
+
+        a.section-link:hover {
+            color: #3b8bba;
+        }
+
+        a.section-link:focus {
+            outline-width: 0px;
+            outline-style: none;
+        }
+
+        div.sidebar {
+            position: fixed;
         }
 
 </style>
@@ -73,20 +111,32 @@ a:visited {
 <body>
 <div class="pure-g">
     <div class="pure-u-4-5">
-
     <h1>
-        {{ get_tag_lang(topic, "heading").text_content }}
+        Python.v.JavaScript
     </h1>
+    <h2>
+        JavaScript for Pythonistas. Python for JavaScripters
+    </h2>
+    <h3>
+        {{ get_tag_lang(topic, "heading").text_content }}
+    </h3>
         {%  if get_tag_lang(topic, "description") %}
         {{ mistune.markdown(get_tag_lang(topic, "description").text_content) | safe }}
         {%  endif %}
-<table class="pure-table" style='table-layout: fixed; width:100%;' >
+<table class="pure-table">
+    <tr>
+        <th>Python</th>
+        <th>Javascript</th>
+    </tr>
     {% for compare in topic.find_all("compare") %}
         {% for what in compare.find_all("what") %}
            {% if what._lang.value == lang %}
                 <tr>
                 <td colspan="2" class="what">
                 {{ what.text_content }}
+                    {% if compare._id %}
+                    <a href="#{{ compare._id.value }}" id="{{ compare._id.value }}" class="section-link">#</a>
+                    {% endif %}
                 </td>
                 </tr>
            {% endif %}
@@ -101,8 +151,15 @@ a:visited {
         </tr>
     {% endfor %}
 </table>
+    <div style="text-align: center; font-size: 80%; color: #aaaaaa; margin:0.5em;">
+© Ilya V. Schurov, 2017<br/>
+        Licenses: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY</a> (text),
+        <a href="https://opensource.org/licenses/MIT">MIT</a> (code).<br/>
+        <a href="http://github.com/ischurov/pythonvjs">contribute on github</a>
+</div>
+
         </div>
-<div class="pure-u-1-5">
+<div class="pure-u-1-5 sidebar">
 <h1 class="sidebar"> {{ translate("Language") }}</h1>
 <ul>
     {% for lng, language in [('en', 'English'), ('ru', 'Russian')] %}
@@ -126,9 +183,6 @@ a:visited {
     </ul>
 
 </div>
-</div>
-<div style="text-align: center; font-size: 80%; color: #aaaaaa; margin:0.5em;">
-© Ilya V. Schurov | <a href="http://github.com/ischurov/pythonvjs">pythonvjs @ github</a>
 </div>
 </body>
 </html>

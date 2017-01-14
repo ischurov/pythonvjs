@@ -1,3 +1,5 @@
 \include lists-arrays.qq
 \include loop-for.qq
-
+\include dicts-objects.qq
+\include scopes.qq
+\include types.qq

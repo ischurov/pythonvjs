@@ -12,6 +12,7 @@
         The basic structure to store several elements in a sequence is called
         `list` in Python and `Array` in JavaScript.
     \compare
+        \id list-creation
         \what \lang ru
             Создание списка / массива
         \what \lang en
@@ -23,6 +24,7 @@
             var my_array = [3, 2, 10, "Hello"]
             \out my_array
     \compare
+        \id index-access
         \what \lang ru
             Доступ по индексу
         \what \lang en
@@ -38,6 +40,27 @@
             \out my_array[1]
             \out my_array[my_array.length-1]
     \compare
+        \id string-indexes
+        \what \lang ru
+            Индексы как строки
+        \what \lang en
+            String indexes
+        \python
+            my_list = [2, 3, 10]
+            my_list["0"]
+        \js
+            var my_array = [2, 3, 10]
+            \out my_array["0"]
+            \comment \lang ru
+                В JavaScript массивы являются частным случаем объектов,
+                а объекты индексируются строками. Числовые индексы
+                неявно преобразуются в строки.
+            \comment \lang en
+                In JavaScript, Arrays are Objects, and Objects
+                are indexed by strings. Numeric indexes are coerced
+                into strings.
+    \compare
+        \id modification-of-value
         \what \lang ru
             Изменение значения элемента списка / массива
         \what \lang en
@@ -51,6 +74,7 @@
             my_array[0] = 100
             \out my_array
     \compare
+        \id length
         \what \lang ru
             Длина списка / массива
         \what \lang en
@@ -62,6 +86,7 @@
             var my_array = [3, 2, 10, "Hello"]
             \out my_array.length
     \compare
+        \id appending
         \what \lang ru
             Добавление элемента в список / массив
         \what \lang en
@@ -75,10 +100,11 @@
             my_array.push(5)
             \out my_array
     \compare
+        \id appending-several
         \what \lang ru
             Добавление нескольких элементов в список / массив
         \what \lang en
-            Adding several elements it list / array
+            Adding several elements in list / array
         \python
             my_list = [3, 2]
             my_list.extend([12, 20])
@@ -88,6 +114,7 @@
             my_array.push(12, 20)
             \out my_array
     \compare
+        \id extending
         \what \lang ru
             Расширение списка / массива элементами другого списка / массива
         \what \lang en
@@ -123,6 +150,16 @@
             my_array.extend(other_array)
             \out my_array
             \ref http://stackoverflow.com/a/17368101/3025981
+            \comment \lang ru
+                Это наиболее эффективный способ расширения списка в случае,
+                если второй список очень большой. В отличие от остальных
+                методов, здесь не приходится передавать все элементы второго
+                списка в качестве аргументов функции.
+            \comment \lang en
+                This is the most efficient way to extend an array in case
+                the other_array is very large. In contrast with other methods
+                discussed here, in this case we do not pass elements of
+                other_array as arguments of a function.
         \js \require es6
             var my_array = [3, 2, 10, "Hello"]
             var other_array = [1, 2, 3]
@@ -132,6 +169,7 @@
                 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator#A_better_push
             \seealso unpacking
     \compare
+        \id deleting-element
         \what \lang ru
             Удаление элемента массива по индексу
         \what \lang en
@@ -149,3 +187,107 @@
             \out my_array[1]
             \out my_array.length
 
+    \compare
+        \id clear-list
+        \what \lang ru
+            Очистить список / массив
+        \what \lang en
+            Clear list / array
+        \python
+            my_list = [1, 2, 10]
+            my_list.clear()
+            \out my_list
+        \js
+            var my_array = [1, 2, 10]
+            my_array.length = 0
+            \out my_array
+    \compare
+        \id get-element-out-of-range
+        \what \lang ru
+            Получить элемент с индексом вне диапазона
+        \what \lang en
+            Get element with index out of range
+        \python
+            my_list = [1, 20, 10]
+            my_list[3]
+        \js
+            var my_array = [1, 20, 10]
+            \out my_array[3]
+    \compare
+        \id add-elements-out-of-range
+        \what \lang ru
+            Добавить элемент вне диапазона
+        \what \lang en
+            Add element out of range
+        \python
+            my_list = [1, 2, 10]
+            my_list[5] = 100
+        \js
+            var my_array = [1, 2, 10]
+            my_array[5] = 100
+            \out my_array
+            \out my_array[3]
+            \out my_array[5]
+    \compare
+        \id check-in
+        \what \lang ru
+            Проверить наличие элемента в списке
+        \what \lang en
+            Check if element in the list
+        \python
+            my_list = [1, 7, 10]
+            \out 1 in my_list
+            \out 7 in my_list
+            \out 10 in my_list
+            \out 2 in my_list
+            \out "1" in my_list
+        \js
+            var my_array = [1, 7, 10];
+            \out 1 in my_array
+            \out 7 in my_array
+            \out 10 in my_array
+            \out 2 in my_array
+            \out "1" in my_array
+            \comment \lang ru
+                Поскольку массив в JavaScript — это частный случай объекта (то
+                есть штуки, похожей на словарь), `in`
+                проверяет, есть ли данный элемент среди индексов (ключей), а не
+                среди значений. См. [этот
+                ответ](http://stackoverflow.com/a/1473742/3025981) по поводу
+                проверки на наличие элемента среди значений.
+            \comment \lang en
+                As Array is a subtype of object (i.e. something dict-like), `in`
+                checks if given element exists among indexes (keys), not among
+                values. See [this
+                answer](http://stackoverflow.com/a/1473742/3025981) for check
+                among values.
+    \compare
+        \id slices
+        \what \lang ru
+            Срезы
+        \what \lang en
+            Slices
+        \python
+            my_list = [0, 10, 20, 30, 40, 50, 60]
+            \out my_list[2:4]
+            \out my_list[:2]
+            \out my_list[2:]
+            \out my_list[2:-2]
+            \out my_list[:]
+            \out my_list[2:6:2]
+            \out my_list[4:2:-1]
+        \js
+            my_array = [0, 10, 20, 30, 40, 50, 60]
+            \out my_array.slice(2, 4)
+            \out my_array.slice(null, 2)
+            \out my_array.slice(2)
+            \out my_array.slice(2, -2)
+            \out my_array.slice()
+            \comment \lang ru
+                Срезов с шагом (третий аргумент в Python) в JavaScript по
+                умолчанию нет.
+            \comment \lang en
+                There's no slices with step (third argument in Python's) by
+                default in JavaScript.
+            \ref https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/slice
+                

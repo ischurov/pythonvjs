@@ -16,6 +16,7 @@
         1. Do something given number of times.
         2. Process all elements of some data structure (e.g. list).
     \compare
+        \id execute-block-several-times
         \what \lang ru
             Выполнить блок заданное число раз
         \what \lang en
@@ -25,9 +26,10 @@
                 print("i =", i)
         \js
             for(var i=0; i<4; i++) {
-                console.log("i =", i)
+                console.log("i =", i);
             }
     \compare
+        \id enumerate-all-elements-of-list
         \what \lang ru
             Обработать все элементы списка / массива
         \what \lang en
@@ -41,7 +43,34 @@
             for (var i=0; i<my_array.length; i++) {
                 console.log(my_array[i])
             }
+            \comment \lang ru
+                Это наиболее безопасный способ перебора элементов массива.
+                Поддерживается во всех версиях JS, нет опасности включить
+                в перебор свойства, не являющиеся индексированными элементами
+                списка, см. [другой пример](#enumeration-in-properties).
+            \comment \lang en
+                This is the most safe way to process all elements of array.
+                Supported in all versions of JS, there is no possibility to
+                mistakenly include properties that are not indexed elements of
+                a list, see [another example](#enumeration-in-properties).
+        \js
+            var my_array = [1, 2, 10];
+            for (i in my_array) {
+                console.log(my_array[i]);
+            }
+        \js
+            var my_array = [1, 2, 10];
+            for (element of my_array) {
+                console.log(element)
+            }
+            \require es6
+        \js 
+            var my_array = [1, 2, 10];
+            my_array.forEach(function(v) {
+                console.log(v)
+            })
     \compare
+        \id value-of-loop-variable-after-exit
         \what \lang ru
             Значение переменной цикла после его выполнения
         \what \lang en
@@ -59,9 +88,125 @@
             for (let i=0; i<4; i++) {
                console.log("Step", i)
             }
-            try { 
-                console.log("Outside of loop, i =", i)
-            } catch(e) {
-                console.log(e)
-            }
+            console.log("Outside of loop, i =", i)
             \require es6
+    \compare
+        \id enumeration-in-properties
+        \what \lang ru
+            Опасности перебора элементов списка с помощью in
+        \what \lang en
+            Caveats of list elements enumeration with in
+        \python
+            my_list = [1, 2, 10]
+            my_list.some_value = "I'm here!"
+            for element in my_list:
+                print(element)
+            \comment \lang ru
+                В объект стандартного типа `list` невозможно добавить свойства.
+            \comment \lang en
+                It is impossible to add properties to instance of standard
+                `list` class.
+        \python
+            class MyList(list):
+                def __init__(self, *args, **kwargs):
+                    super().__init__(*args, **kwargs)
+            brand_new_list = MyList([1, 2, 10])
+            brand_new_list.some_value = "I'm here!"
+            for element in brand_new_list:
+                print(element)
+            \comment \lang ru
+                Можно создать новый класс, наследуя от `list` (хотя в общем
+                случае это не рекомендуется делать), и добавить к нему
+                дополнительные свойства. Это не повлияет на перебор элементов
+                списка с помощью `for ... in ...`.
+            \comment \lang en
+                It is possible to inherit from `list` (although not recommended)
+                and add additional properties to an instance of this new class.
+                It does not affect enumerating with `for ... in ...`.
+        \js
+            var my_array = [1, 2, 10];
+            my_array.some_value = "I'm here!";
+            for (i in my_array) {
+                console.log(my_array[i]);
+            }
+            \comment \lang ru
+                В JavaScript массив — это просто (хорошо оптимизированный) объект с
+                числовыми индексами. Если вы добавите ещё одно свойство в этот
+                объект, оно окажется в числе перечисляемых с помощью `for ... in
+                ...`.
+            \comment \lang en
+                In JavaScript, Array is just an (optimized) Object with numeric
+                indexes. If you add some properties (with string index) into
+                this object, this property will be enumerated with `for ... in
+                ...`.
+                
+        \js
+            var my_array = [1, 2, 10];
+            Array.prototype.some_value = "I'm here!";
+            for (i in my_array) {
+                console.log(my_array[i]);
+            }
+    \compare
+        \id dict-obj-enumeration
+        \what \lang ru
+            Перебор ключей в словаре / объекте
+        \what \lang en
+            Enumeration of keys in dictionary / object
+        \python
+            my_dict = {'a': 10, 'b': 20}
+            for key in my_dict:
+                print(key)
+        \js
+            my_obj = {a: 10, b: 20}
+            Object.prototype.new_property = function() {
+                return "Hello";
+            }
+            for (key in my_obj) {
+                console.log(key);
+            }
+            \comment \lang ru
+                В объектах JavaScript не различаются записи, свойства и методы.
+                Более того: цикл `for` в данном случае перебирает не только по
+                элементам самого объекта, но и по элементам его прототипа (если 
+                только они специально не отмечены как `enumerable: false`).
+            \comment \lang en
+                In JavaScript objects, there's no difference between key-value 
+                records, properties and methods. Moreover, not only elements of
+                object are enumerated, but also elements of a prototype (if they
+                are not marked with `enumerable: false`).
+        \js
+            my_obj = {a: 10, b: 20}
+            Object.prototype.new_property = function() {
+                return "Hello";
+            }
+            for (key in my_obj) {
+                if (my_obj.hasOwnProperty(key)) {
+                    console.log(key);
+                }
+            }
+    \compare
+        \id dict-obj-key-value-pair
+        \what \lang ru
+            Перебор ключей и значений в словаре / объекте
+        \what \lang en
+            Enumeration of keys and values in dictionary / object
+        \python
+            my_dict = {'a': 10, 'b': 20}
+            for key, value in my_dict.items():
+                print(key, "=>", value)
+        \js
+            my_obj = {a: 10, b: 20}
+            Object.prototype.new_property = function() {
+                return "Hello";
+            }
+            for (key in my_obj) {
+                if (my_obj.hasOwnProperty(key)) {
+                    console.log(key, "=>", my_obj[key]);
+                }
+            }
+            \comment \lang ru
+                См. комментарий к [другому примеру](#dict-obj-enumeration).
+            \comment \lang en
+                See comment to [other example](#dict-obj-enumeration).
+            \ref http://stackoverflow.com/a/7241901/3025981
+

@@ -6,11 +6,6 @@
     <meta charset="UTF-8">
     <title>Цикл for
  — python-v-js</title>
-    <style type="text/css">
-        td.what {
-            text-align: center;
-        }
-    </style>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
     <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD" crossorigin="anonymous">
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
@@ -30,22 +25,62 @@
        font-size: 75%;
     }
 
-    p, h1 {
+    p, h1, h2, h3 {
         margin: 15px 15px;
     }
 
     h1.sidebar {
         font-size: 120%;
     }
+    .comment {
+        color: #555;
+        font-size: 85%;
+        border-left: 10px solid #ddd;
+        background-color: #f7f7f7;
+        margin: 1.5em 0px;
+        padding: 0.01em 0px;
+    }
 
+    .pure-table {
+        border: 0px;
+        table-layout: fixed;
+        width: 100%;
+    }
 
-a:visited {
-    color: #265778; /* block-normal-text-normal */
-}
-        pre.output {
-           /* background-color:#edffed; */
-            padding: 0em;
-            margin-top: 0em;
+    td.what {
+            color: #333;
+            text-align: center;
+            border-top: 1px solid #cbcbcb;
+            padding-top: 1em;
+            font-weight: bold;
+
+        }
+
+    a:visited {
+        color: #265778; /* block-normal-text-normal */
+    }
+
+    pre.output {
+       /* background-color:#edffed; */
+        padding: 0em;
+        margin-top: 0em;
+    }
+
+        a.section-link {
+            color: #aaaaaa;
+        }
+
+        a.section-link:hover {
+            color: #3b8bba;
+        }
+
+        a.section-link:focus {
+            outline-width: 0px;
+            outline-style: none;
+        }
+
+        div.sidebar {
+            position: fixed;
         }
 
 </style>
@@ -55,11 +90,16 @@ a:visited {
 <body>
 <div class="pure-g">
     <div class="pure-u-4-5">
-
     <h1>
+        Python.v.JavaScript
+    </h1>
+    <h2>
+        JavaScript for Pythonistas. Python for JavaScripters
+    </h2>
+    <h3>
         Цикл for
 
-    </h1>
+    </h3>
         
         <p>Цикл <code>for</code> используется для двух основных целей:</p>
 <ol>
@@ -69,7 +109,11 @@ a:visited {
 </ol>
 
         
-<table class="pure-table" style='table-layout: fixed; width:100%;' >
+<table class="pure-table">
+    <tr>
+        <th>Python</th>
+        <th>Javascript</th>
+    </tr>
     
         
            
@@ -77,6 +121,9 @@ a:visited {
                 <td colspan="2" class="what">
                 Выполнить блок заданное число раз
 
+                    
+                    <a href="#execute-block-several-times" id="execute-block-several-times" class="section-link">#</a>
+                    
                 </td>
                 </tr>
            
@@ -104,6 +151,7 @@ i = 3
     
     
     
+    
 
             </td>
             <td>
@@ -111,7 +159,7 @@ i = 3
     
         
             <pre><code class="javascript">for(var i=0; i&lt;4; i++) {
-    console.log(&#34;i =&#34;, i)
+    console.log(&#34;i =&#34;, i);
 }</code></pre>
         
     
@@ -126,6 +174,7 @@ i = 3
     
     
     
+    
 
             </td>
         </tr>
@@ -136,6 +185,9 @@ i = 3
                 <td colspan="2" class="what">
                 Обработать все элементы списка / массива
 
+                    
+                    <a href="#enumerate-all-elements-of-list" id="enumerate-all-elements-of-list" class="section-link">#</a>
+                    
                 </td>
                 </tr>
            
@@ -163,10 +215,15 @@ for element in my_list:
     
     
     
+    
 
             </td>
             <td>
                 
+    
+        
+    
+        
     
         
             <pre><code class="javascript">var my_array = [1, 2, 10];
@@ -185,6 +242,83 @@ for (var i=0; i&lt;my_array.length; i++) {
     
     
     
+        <div class="comment"><p>Это наиболее безопасный способ перебора элементов массива.
+Поддерживается во всех версиях JS, нет опасности включить
+в перебор свойства, не являющиеся индексированными элементами
+списка, см. <a href="#enumeration-in-properties">другой пример</a>.</p>
+</div>
+    
+    
+        <hr/>
+    
+
+    
+        
+            <pre><code class="javascript">var my_array = [1, 2, 10];
+for (i in my_array) {
+    console.log(my_array[i]);
+}</code></pre>
+        
+    
+        
+            <pre class="output">1
+2
+10
+</pre>
+        
+    
+    
+    
+    
+    
+        <hr/>
+    
+
+    
+        
+    
+        
+            <pre><code class="javascript">var my_array = [1, 2, 10];
+for (element of my_array) {
+    console.log(element)
+}</code></pre>
+        
+    
+        
+            <pre class="output">1
+2
+10
+</pre>
+        
+    
+    
+    
+        <span class="require">требует: es6</span>
+    
+    
+    
+        <hr/>
+    
+
+    
+        
+            <pre><code class="javascript">var my_array = [1, 2, 10];
+my_array.forEach(function(v) {
+    console.log(v)
+})</code></pre>
+        
+    
+        
+            <pre class="output">1
+2
+10
+</pre>
+        
+    
+    
+    
+    
+    
 
             </td>
         </tr>
@@ -195,6 +329,9 @@ for (var i=0; i&lt;my_array.length; i++) {
                 <td colspan="2" class="what">
                 Значение переменной цикла после его выполнения
 
+                    
+                    <a href="#value-of-loop-variable-after-exit" id="value-of-loop-variable-after-exit" class="section-link">#</a>
+                    
                 </td>
                 </tr>
            
@@ -224,6 +361,7 @@ Outside of loop, i = 3
     
     
     
+    
 
             </td>
             <td>
@@ -248,6 +386,7 @@ Outside of loop, i = 4
     
     
     
+    
         <hr/>
     
 
@@ -258,11 +397,7 @@ Outside of loop, i = 4
             <pre><code class="javascript">for (let i=0; i&lt;4; i++) {
    console.log(&#34;Step&#34;, i)
 }
-try { 
-    console.log(&#34;Outside of loop, i =&#34;, i)
-} catch(e) {
-    console.log(e)
-}</code></pre>
+console.log(&#34;Outside of loop, i =&#34;, i)</code></pre>
         
     
         
@@ -270,8 +405,12 @@ try {
 Step 1
 Step 2
 Step 3
+[stdin]:4
+console.log(&#34;Outside of loop, i =&#34;, i)
+                                    ^
+
 ReferenceError: i is not defined
-    at [stdin]:5:41
+    at [stdin]:4:37
     at ContextifyScript.Script.runInThisContext (vm.js:26:33)
     at Object.exports.runInThisContext (vm.js:79:17)
     at Object.&lt;anonymous&gt; ([stdin]-wrapper:6:22)
@@ -285,7 +424,331 @@ ReferenceError: i is not defined
     
     
     
-        <span class="require">require: es6</span>
+        <span class="require">требует: es6</span>
+    
+    
+    
+
+            </td>
+        </tr>
+    
+        
+           
+                <tr>
+                <td colspan="2" class="what">
+                Опасности перебора элементов списка с помощью in
+
+                    
+                    <a href="#enumeration-in-properties" id="enumeration-in-properties" class="section-link">#</a>
+                    
+                </td>
+                </tr>
+           
+        
+           
+        
+        <tr>
+            <td>
+                
+    
+        
+            <pre><code class="python">my_list = [1, 2, 10]
+my_list.some_value = &#34;I&#39;m here!&#34;
+for element in my_list:
+    print(element)
+</code></pre>
+        
+    
+        
+            <pre class="output">Exception: AttributeError
+&#39;list&#39; object has no attribute &#39;some_value&#39;
+</pre>
+        
+    
+        
+    
+        
+    
+    
+    
+    
+        <div class="comment"><p>В объект стандартного типа <code>list</code> невозможно добавить свойства.</p>
+</div>
+    
+    
+        <hr/>
+    
+
+    
+        
+            <pre><code class="python">class MyList(list):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+brand_new_list = MyList([1, 2, 10])
+brand_new_list.some_value = &#34;I&#39;m here!&#34;
+for element in brand_new_list:
+    print(element)
+</code></pre>
+        
+    
+        
+            <pre class="output">1
+2
+10
+</pre>
+        
+    
+        
+    
+        
+    
+    
+    
+    
+        <div class="comment"><p>Можно создать новый класс, наследуя от <code>list</code> (хотя в общем
+случае это не рекомендуется делать), и добавить к нему
+дополнительные свойства. Это не повлияет на перебор элементов
+списка с помощью <code>for ... in ...</code>.</p>
+</div>
+    
+    
+
+            </td>
+            <td>
+                
+    
+        
+    
+        
+    
+        
+            <pre><code class="javascript">var my_array = [1, 2, 10];
+my_array.some_value = &#34;I&#39;m here!&#34;;
+for (i in my_array) {
+    console.log(my_array[i]);
+}</code></pre>
+        
+    
+        
+            <pre class="output">1
+2
+10
+I&#39;m here!
+</pre>
+        
+    
+    
+    
+    
+        <div class="comment"><p>В JavaScript массив — это просто (хорошо оптимизированный) объект с
+числовыми индексами. Если вы добавите ещё одно свойство в этот
+объект, оно окажется в числе перечисляемых с помощью <code>for ... in
+...</code>.</p>
+</div>
+    
+    
+        <hr/>
+    
+
+    
+        
+            <pre><code class="javascript">var my_array = [1, 2, 10];
+Array.prototype.some_value = &#34;I&#39;m here!&#34;;
+for (i in my_array) {
+    console.log(my_array[i]);
+}</code></pre>
+        
+    
+        
+            <pre class="output">1
+2
+10
+I&#39;m here!
+</pre>
+        
+    
+    
+    
+    
+    
+
+            </td>
+        </tr>
+    
+        
+           
+                <tr>
+                <td colspan="2" class="what">
+                Перебор ключей в словаре / объекте
+
+                    
+                    <a href="#dict-obj-enumeration" id="dict-obj-enumeration" class="section-link">#</a>
+                    
+                </td>
+                </tr>
+           
+        
+           
+        
+        <tr>
+            <td>
+                
+    
+        
+            <pre><code class="python">my_dict = {&#39;a&#39;: 10, &#39;b&#39;: 20}
+for key in my_dict:
+    print(key)
+</code></pre>
+        
+    
+        
+            <pre class="output">b
+a
+</pre>
+        
+    
+    
+    
+    
+    
+
+            </td>
+            <td>
+                
+    
+        
+    
+        
+    
+        
+            <pre><code class="javascript">my_obj = {a: 10, b: 20}
+Object.prototype.new_property = function() {
+    return &#34;Hello&#34;;
+}
+for (key in my_obj) {
+    console.log(key);
+}</code></pre>
+        
+    
+        
+            <pre class="output">a
+b
+new_property
+</pre>
+        
+    
+    
+    
+    
+        <div class="comment"><p>В объектах JavaScript не различаются записи, свойства и методы.
+Более того: цикл <code>for</code> в данном случае перебирает не только по
+элементам самого объекта, но и по элементам его прототипа (если 
+только они специально не отмечены как <code>enumerable: false</code>).</p>
+</div>
+    
+    
+        <hr/>
+    
+
+    
+        
+            <pre><code class="javascript">my_obj = {a: 10, b: 20}
+Object.prototype.new_property = function() {
+    return &#34;Hello&#34;;
+}
+for (key in my_obj) {
+    if (my_obj.hasOwnProperty(key)) {
+        console.log(key);
+    }
+}</code></pre>
+        
+    
+        
+            <pre class="output">a
+b
+</pre>
+        
+    
+    
+    
+    
+    
+
+            </td>
+        </tr>
+    
+        
+           
+                <tr>
+                <td colspan="2" class="what">
+                Перебор ключей и значений в словаре / объекте
+
+                    
+                    <a href="#dict-obj-key-value-pair" id="dict-obj-key-value-pair" class="section-link">#</a>
+                    
+                </td>
+                </tr>
+           
+        
+           
+        
+        <tr>
+            <td>
+                
+    
+        
+            <pre><code class="python">my_dict = {&#39;a&#39;: 10, &#39;b&#39;: 20}
+for key, value in my_dict.items():
+    print(key, &#34;=&gt;&#34;, value)
+</code></pre>
+        
+    
+        
+            <pre class="output">b =&gt; 20
+a =&gt; 10
+</pre>
+        
+    
+    
+    
+    
+    
+
+            </td>
+            <td>
+                
+    
+        
+    
+        
+    
+        
+    
+        
+            <pre><code class="javascript">my_obj = {a: 10, b: 20}
+Object.prototype.new_property = function() {
+    return &#34;Hello&#34;;
+}
+for (key in my_obj) {
+    if (my_obj.hasOwnProperty(key)) {
+        console.log(key, &#34;=&gt;&#34;, my_obj[key]);
+    }
+}</code></pre>
+        
+    
+        
+            <pre class="output">a =&gt; 10
+b =&gt; 20
+</pre>
+        
+    
+    
+        <a href="http://stackoverflow.com/a/7241901/3025981" class="ref">source</a>
+    
+    
+    
+        <div class="comment"><p>См. комментарий к <a href="#dict-obj-enumeration">другому примеру</a>.</p>
+</div>
     
     
 
@@ -293,8 +756,15 @@ ReferenceError: i is not defined
         </tr>
     
 </table>
+    <div style="text-align: center; font-size: 80%; color: #aaaaaa; margin:0.5em;">
+© Ilya V. Schurov, 2017<br/>
+        Licenses: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY</a> (text),
+        <a href="https://opensource.org/licenses/MIT">MIT</a> (code).<br/>
+        <a href="http://github.com/ischurov/pythonvjs">contribute on github</a>
+</div>
+
         </div>
-<div class="pure-u-1-5">
+<div class="pure-u-1-5 sidebar">
 <h1 class="sidebar"> Язык</h1>
 <ul>
     
@@ -330,12 +800,33 @@ ReferenceError: i is not defined
     </li>
 
     
+    <li>
+<a href="/pythonvjs/show/dicts-objects/ru/">
+    Словари / объекты
+
+</a>
+    </li>
+
+    
+    <li>
+<a href="/pythonvjs/show/scopes/ru/">
+    Области видимости
+
+</a>
+    </li>
+
+    
+    <li>
+<a href="/pythonvjs/show/types/ru/">
+    Типы
+
+</a>
+    </li>
+
+    
     </ul>
 
 </div>
-</div>
-<div style="text-align: center; font-size: 80%; color: #aaaaaa; margin:0.5em;">
-© Ilya V. Schurov | <a href="http://github.com/ischurov/pythonvjs">pythonvjs @ github</a>
 </div>
 </body>
 </html>

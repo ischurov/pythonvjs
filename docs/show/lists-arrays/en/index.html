@@ -6,11 +6,6 @@
     <meta charset="UTF-8">
     <title>Lists / arrays
  — python-v-js</title>
-    <style type="text/css">
-        td.what {
-            text-align: center;
-        }
-    </style>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
     <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD" crossorigin="anonymous">
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
@@ -30,22 +25,62 @@
        font-size: 75%;
     }
 
-    p, h1 {
+    p, h1, h2, h3 {
         margin: 15px 15px;
     }
 
     h1.sidebar {
         font-size: 120%;
     }
+    .comment {
+        color: #555;
+        font-size: 85%;
+        border-left: 10px solid #ddd;
+        background-color: #f7f7f7;
+        margin: 1.5em 0px;
+        padding: 0.01em 0px;
+    }
 
+    .pure-table {
+        border: 0px;
+        table-layout: fixed;
+        width: 100%;
+    }
 
-a:visited {
-    color: #265778; /* block-normal-text-normal */
-}
-        pre.output {
-           /* background-color:#edffed; */
-            padding: 0em;
-            margin-top: 0em;
+    td.what {
+            color: #333;
+            text-align: center;
+            border-top: 1px solid #cbcbcb;
+            padding-top: 1em;
+            font-weight: bold;
+
+        }
+
+    a:visited {
+        color: #265778; /* block-normal-text-normal */
+    }
+
+    pre.output {
+       /* background-color:#edffed; */
+        padding: 0em;
+        margin-top: 0em;
+    }
+
+        a.section-link {
+            color: #aaaaaa;
+        }
+
+        a.section-link:hover {
+            color: #3b8bba;
+        }
+
+        a.section-link:focus {
+            outline-width: 0px;
+            outline-style: none;
+        }
+
+        div.sidebar {
+            position: fixed;
         }
 
 </style>
@@ -55,17 +90,26 @@ a:visited {
 <body>
 <div class="pure-g">
     <div class="pure-u-4-5">
-
     <h1>
+        Python.v.JavaScript
+    </h1>
+    <h2>
+        JavaScript for Pythonistas. Python for JavaScripters
+    </h2>
+    <h3>
         Lists / arrays
 
-    </h1>
+    </h3>
         
         <p>The basic structure to store several elements in a sequence is called
 <code>list</code> in Python and <code>Array</code> in JavaScript.</p>
 
         
-<table class="pure-table" style='table-layout: fixed; width:100%;' >
+<table class="pure-table">
+    <tr>
+        <th>Python</th>
+        <th>Javascript</th>
+    </tr>
     
         
            
@@ -75,6 +119,9 @@ a:visited {
                 <td colspan="2" class="what">
                 Creation of list / array
 
+                    
+                    <a href="#list-creation" id="list-creation" class="section-link">#</a>
+                    
                 </td>
                 </tr>
            
@@ -91,6 +138,7 @@ my_list</code></pre>
         
             <pre class="output">[3, 2, 10, &#39;Hello&#39;]</pre>
         
+    
     
     
     
@@ -113,6 +161,7 @@ my_array</code></pre>
     
     
     
+    
 
             </td>
         </tr>
@@ -125,6 +174,9 @@ my_array</code></pre>
                 <td colspan="2" class="what">
                 Access by index
 
+                    
+                    <a href="#index-access" id="index-access" class="section-link">#</a>
+                    
                 </td>
                 </tr>
            
@@ -157,6 +209,7 @@ my_list[0]</code></pre>
         
             <pre class="output">&#39;Hello&#39;</pre>
         
+    
     
     
     
@@ -197,6 +250,74 @@ my_array[0]</code></pre>
     
     
     
+    
+
+            </td>
+        </tr>
+    
+        
+           
+        
+           
+                <tr>
+                <td colspan="2" class="what">
+                String indexes
+
+                    
+                    <a href="#string-indexes" id="string-indexes" class="section-link">#</a>
+                    
+                </td>
+                </tr>
+           
+        
+        <tr>
+            <td>
+                
+    
+        
+            <pre><code class="python">my_list = [2, 3, 10]
+my_list[&#34;0&#34;]
+</code></pre>
+        
+    
+        
+            <pre class="output">Exception: TypeError
+list indices must be integers or slices, not str
+</pre>
+        
+    
+    
+    
+    
+    
+
+            </td>
+            <td>
+                
+    
+        
+            <pre><code class="javascript">var my_array = [2, 3, 10]
+my_array[&#34;0&#34;]</code></pre>
+        
+    
+        
+            <pre class="output">2
+</pre>
+        
+    
+        
+    
+        
+    
+    
+    
+    
+        <div class="comment"><p>In JavaScript, Arrays are Objects, and Objects
+are indexed by strings. Numeric indexes are coerced
+into strings.</p>
+</div>
+    
+    
 
             </td>
         </tr>
@@ -209,6 +330,9 @@ my_array[0]</code></pre>
                 <td colspan="2" class="what">
                 Modification of the value of elements of list / array
 
+                    
+                    <a href="#modification-of-value" id="modification-of-value" class="section-link">#</a>
+                    
                 </td>
                 </tr>
            
@@ -226,6 +350,7 @@ my_list</code></pre>
         
             <pre class="output">[100, 2, 10, &#39;Hello&#39;]</pre>
         
+    
     
     
     
@@ -249,6 +374,7 @@ my_array</code></pre>
     
     
     
+    
 
             </td>
         </tr>
@@ -261,6 +387,9 @@ my_array</code></pre>
                 <td colspan="2" class="what">
                 Length of list / array
 
+                    
+                    <a href="#length" id="length" class="section-link">#</a>
+                    
                 </td>
                 </tr>
            
@@ -277,6 +406,7 @@ len(my_list)</code></pre>
         
             <pre class="output">4</pre>
         
+    
     
     
     
@@ -299,6 +429,7 @@ my_array.length</code></pre>
     
     
     
+    
 
             </td>
         </tr>
@@ -311,6 +442,9 @@ my_array.length</code></pre>
                 <td colspan="2" class="what">
                 Appending element to list / array
 
+                    
+                    <a href="#appending" id="appending" class="section-link">#</a>
+                    
                 </td>
                 </tr>
            
@@ -328,6 +462,7 @@ my_list</code></pre>
         
             <pre class="output">[3, 2, 10, &#39;Hello&#39;, 5]</pre>
         
+    
     
     
     
@@ -351,6 +486,7 @@ my_array</code></pre>
     
     
     
+    
 
             </td>
         </tr>
@@ -361,8 +497,11 @@ my_array</code></pre>
            
                 <tr>
                 <td colspan="2" class="what">
-                Adding several elements it list / array
+                Adding several elements in list / array
 
+                    
+                    <a href="#appending-several" id="appending-several" class="section-link">#</a>
+                    
                 </td>
                 </tr>
            
@@ -380,6 +519,7 @@ my_list</code></pre>
         
             <pre class="output">[3, 2, 12, 20]</pre>
         
+    
     
     
     
@@ -403,6 +543,7 @@ my_array</code></pre>
     
     
     
+    
 
             </td>
         </tr>
@@ -415,6 +556,9 @@ my_array</code></pre>
                 <td colspan="2" class="what">
                 Extending list / array with elements of another list / array
 
+                    
+                    <a href="#extending" id="extending" class="section-link">#</a>
+                    
                 </td>
                 </tr>
            
@@ -433,6 +577,7 @@ my_list</code></pre>
         
             <pre class="output">[3, 2, 10, &#39;Hello&#39;, 1, 2, 3]</pre>
         
+    
     
     
     
@@ -461,6 +606,7 @@ my_array</code></pre>
     
     
     
+    
         <hr/>
     
 
@@ -481,6 +627,7 @@ my_array</code></pre>
     
     
         <a href="http://stackoverflow.com/a/1374131/3025981" class="ref">source</a>
+    
     
     
     
@@ -510,9 +657,20 @@ my_array</code></pre>
     
         
     
+        
+    
+        
+    
     
         <a href="http://stackoverflow.com/a/17368101/3025981" class="ref">source</a>
     
+    
+    
+        <div class="comment"><p>This is the most efficient way to extend an array in case
+the other_array is very large. In contrast with other methods
+discussed here, in this case we do not pass elements of
+other_array as arguments of a function.</p>
+</div>
     
     
         <hr/>
@@ -539,6 +697,7 @@ my_array</code></pre>
         <span class="require">require: es6</span>
     
     
+    
 
             </td>
         </tr>
@@ -551,6 +710,9 @@ my_array</code></pre>
                 <td colspan="2" class="what">
                 Remove array element by index
 
+                    
+                    <a href="#deleting-element" id="deleting-element" class="section-link">#</a>
+                    
                 </td>
                 </tr>
            
@@ -584,6 +746,7 @@ my_list</code></pre>
         
             <pre class="output">2</pre>
         
+    
     
     
     
@@ -625,13 +788,498 @@ my_array</code></pre>
     
     
     
+    
+
+            </td>
+        </tr>
+    
+        
+           
+        
+           
+                <tr>
+                <td colspan="2" class="what">
+                Clear list / array
+
+                    
+                    <a href="#clear-list" id="clear-list" class="section-link">#</a>
+                    
+                </td>
+                </tr>
+           
+        
+        <tr>
+            <td>
+                
+    
+        
+            <pre><code class="python">my_list = [1, 2, 10]
+my_list.clear()
+my_list</code></pre>
+        
+    
+        
+            <pre class="output">[]</pre>
+        
+    
+    
+    
+    
+    
+
+            </td>
+            <td>
+                
+    
+        
+            <pre><code class="javascript">var my_array = [1, 2, 10]
+my_array.length = 0
+my_array</code></pre>
+        
+    
+        
+            <pre class="output">[]
+</pre>
+        
+    
+    
+    
+    
+    
+
+            </td>
+        </tr>
+    
+        
+           
+        
+           
+                <tr>
+                <td colspan="2" class="what">
+                Get element with index out of range
+
+                    
+                    <a href="#get-element-out-of-range" id="get-element-out-of-range" class="section-link">#</a>
+                    
+                </td>
+                </tr>
+           
+        
+        <tr>
+            <td>
+                
+    
+        
+            <pre><code class="python">my_list = [1, 20, 10]
+my_list[3]
+</code></pre>
+        
+    
+        
+            <pre class="output">Exception: IndexError
+list index out of range
+</pre>
+        
+    
+    
+    
+    
+    
+
+            </td>
+            <td>
+                
+    
+        
+            <pre><code class="javascript">var my_array = [1, 20, 10]
+my_array[3]</code></pre>
+        
+    
+        
+            <pre class="output">undefined
+</pre>
+        
+    
+    
+    
+    
+    
+
+            </td>
+        </tr>
+    
+        
+           
+        
+           
+                <tr>
+                <td colspan="2" class="what">
+                Add element out of range
+
+                    
+                    <a href="#add-elements-out-of-range" id="add-elements-out-of-range" class="section-link">#</a>
+                    
+                </td>
+                </tr>
+           
+        
+        <tr>
+            <td>
+                
+    
+        
+            <pre><code class="python">my_list = [1, 2, 10]
+my_list[5] = 100
+</code></pre>
+        
+    
+        
+            <pre class="output">Exception: IndexError
+list assignment index out of range
+</pre>
+        
+    
+    
+    
+    
+    
+
+            </td>
+            <td>
+                
+    
+        
+            <pre><code class="javascript">var my_array = [1, 2, 10]
+my_array[5] = 100
+my_array</code></pre>
+        
+    
+        
+            <pre class="output">[ 1, 2, 10, , , 100 ]
+</pre>
+        
+    
+        
+            <pre><code class="javascript">my_array[3]</code></pre>
+        
+    
+        
+            <pre class="output">undefined
+</pre>
+        
+    
+        
+            <pre><code class="javascript">my_array[5]</code></pre>
+        
+    
+        
+            <pre class="output">100
+</pre>
+        
+    
+    
+    
+    
+    
+
+            </td>
+        </tr>
+    
+        
+           
+        
+           
+                <tr>
+                <td colspan="2" class="what">
+                Check if element in the list
+
+                    
+                    <a href="#check-in" id="check-in" class="section-link">#</a>
+                    
+                </td>
+                </tr>
+           
+        
+        <tr>
+            <td>
+                
+    
+        
+            <pre><code class="python">my_list = [1, 7, 10]
+1 in my_list</code></pre>
+        
+    
+        
+            <pre class="output">True</pre>
+        
+    
+        
+            <pre><code class="python">7 in my_list</code></pre>
+        
+    
+        
+            <pre class="output">True</pre>
+        
+    
+        
+            <pre><code class="python">10 in my_list</code></pre>
+        
+    
+        
+            <pre class="output">True</pre>
+        
+    
+        
+            <pre><code class="python">2 in my_list</code></pre>
+        
+    
+        
+            <pre class="output">False</pre>
+        
+    
+        
+            <pre><code class="python">&#34;1&#34; in my_list</code></pre>
+        
+    
+        
+            <pre class="output">False</pre>
+        
+    
+    
+    
+    
+    
+
+            </td>
+            <td>
+                
+    
+        
+            <pre><code class="javascript">var my_array = [1, 7, 10];
+1 in my_array</code></pre>
+        
+    
+        
+            <pre class="output">true
+</pre>
+        
+    
+        
+            <pre><code class="javascript">7 in my_array</code></pre>
+        
+    
+        
+            <pre class="output">false
+</pre>
+        
+    
+        
+            <pre><code class="javascript">10 in my_array</code></pre>
+        
+    
+        
+            <pre class="output">false
+</pre>
+        
+    
+        
+            <pre><code class="javascript">2 in my_array</code></pre>
+        
+    
+        
+            <pre class="output">true
+</pre>
+        
+    
+        
+            <pre><code class="javascript">&#34;1&#34; in my_array</code></pre>
+        
+    
+        
+            <pre class="output">true
+</pre>
+        
+    
+        
+    
+        
+    
+    
+    
+    
+        <div class="comment"><p>As Array is a subtype of object (i.e. something dict-like), <code>in</code>
+checks if given element exists among indexes (keys), not among
+values. See <a href="http://stackoverflow.com/a/1473742/3025981">this
+answer</a> for check
+among values.</p>
+</div>
+    
+    
+
+            </td>
+        </tr>
+    
+        
+           
+        
+           
+                <tr>
+                <td colspan="2" class="what">
+                Slices
+
+                    
+                    <a href="#slices" id="slices" class="section-link">#</a>
+                    
+                </td>
+                </tr>
+           
+        
+        <tr>
+            <td>
+                
+    
+        
+            <pre><code class="python">my_list = [0, 10, 20, 30, 40, 50, 60]
+my_list[2:4]</code></pre>
+        
+    
+        
+            <pre class="output">[20, 30]</pre>
+        
+    
+        
+            <pre><code class="python">my_list[:2]</code></pre>
+        
+    
+        
+            <pre class="output">[0, 10]</pre>
+        
+    
+        
+            <pre><code class="python">my_list[2:]</code></pre>
+        
+    
+        
+            <pre class="output">[20, 30, 40, 50, 60]</pre>
+        
+    
+        
+            <pre><code class="python">my_list[2:-2]</code></pre>
+        
+    
+        
+            <pre class="output">[20, 30, 40]</pre>
+        
+    
+        
+            <pre><code class="python">my_list[:]</code></pre>
+        
+    
+        
+            <pre class="output">[0, 10, 20, 30, 40, 50, 60]</pre>
+        
+    
+        
+            <pre><code class="python">my_list[2:6:2]</code></pre>
+        
+    
+        
+            <pre class="output">[20, 40]</pre>
+        
+    
+        
+            <pre><code class="python">my_list[4:2:-1]</code></pre>
+        
+    
+        
+            <pre class="output">[40, 30]</pre>
+        
+    
+    
+    
+    
+    
+
+            </td>
+            <td>
+                
+    
+        
+            <pre><code class="javascript">my_array = [0, 10, 20, 30, 40, 50, 60]
+my_array.slice(2, 4)</code></pre>
+        
+    
+        
+            <pre class="output">[ 20, 30 ]
+</pre>
+        
+    
+        
+            <pre><code class="javascript">my_array.slice(null, 2)</code></pre>
+        
+    
+        
+            <pre class="output">[ 0, 10 ]
+</pre>
+        
+    
+        
+            <pre><code class="javascript">my_array.slice(2)</code></pre>
+        
+    
+        
+            <pre class="output">[ 20, 30, 40, 50, 60 ]
+</pre>
+        
+    
+        
+            <pre><code class="javascript">my_array.slice(2, -2)</code></pre>
+        
+    
+        
+            <pre class="output">[ 20, 30, 40 ]
+</pre>
+        
+    
+        
+            <pre><code class="javascript">my_array.slice()</code></pre>
+        
+    
+        
+            <pre class="output">[ 0, 10, 20, 30, 40, 50, 60 ]
+</pre>
+        
+    
+        
+    
+        
+    
+        
+    
+    
+        <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/slice" class="ref">source</a>
+    
+    
+    
+        <div class="comment"><p>There's no slices with step (third argument in Python's) by
+default in JavaScript.</p>
+</div>
+    
+    
 
             </td>
         </tr>
     
 </table>
+    <div style="text-align: center; font-size: 80%; color: #aaaaaa; margin:0.5em;">
+© Ilya V. Schurov, 2017<br/>
+        Licenses: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY</a> (text),
+        <a href="https://opensource.org/licenses/MIT">MIT</a> (code).<br/>
+        <a href="http://github.com/ischurov/pythonvjs">contribute on github</a>
+</div>
+
         </div>
-<div class="pure-u-1-5">
+<div class="pure-u-1-5 sidebar">
 <h1 class="sidebar"> Language</h1>
 <ul>
     
@@ -667,12 +1315,33 @@ my_array</code></pre>
     </li>
 
     
+    <li>
+<a href="/pythonvjs/show/dicts-objects/en/">
+    Dicts / objects
+
+</a>
+    </li>
+
+    
+    <li>
+<a href="/pythonvjs/show/scopes/en/">
+    Scopes
+
+</a>
+    </li>
+
+    
+    <li>
+<a href="/pythonvjs/show/types/en/">
+    Types
+
+</a>
+    </li>
+
+    
     </ul>
 
 </div>
-</div>
-<div style="text-align: center; font-size: 80%; color: #aaaaaa; margin:0.5em;">
-© Ilya V. Schurov | <a href="http://github.com/ischurov/pythonvjs">pythonvjs @ github</a>
 </div>
 </body>
 </html>
