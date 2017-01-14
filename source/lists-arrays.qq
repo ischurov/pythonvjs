@@ -157,9 +157,9 @@
                 списка в качестве аргументов функции.
             \comment \lang en
                 This is the most efficient way to extend an array in case
-                the other_array is very large. In contrast with other methods
+                the `other_array` is very large. In contrast with other methods
                 discussed here, in this case we do not pass elements of
-                other_array as arguments of a function.
+                `other_array` as arguments of a function.
         \js \require es6
             var my_array = [3, 2, 10, "Hello"]
             var other_array = [1, 2, 3]

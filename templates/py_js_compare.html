@@ -8,7 +8,7 @@
         {% endif %}
     {% endfor %}
     {% for ref in codeblock.find_all("ref") %}
-        <a href="{{ ref.value }}" class="ref">{{ translate("source") }}</a>
+        <a href="{{ ref.value }}" class="ref">{{ translate("reference") }}</a>
     {% endfor %}
     {% for require in codeblock.find_all("require") %}
         <span class="require">{{ translate("require")}}: {{ require.value }}</span>
@@ -181,7 +181,13 @@
 
     {% endfor %}
     </ul>
-
+<h1 class="sidebar">{{ translate("Links") }}</h1>
+<ul>
+    <li><a href="/">{{ translate("blog") }}</a></li>
+    <li><a href="twitter.com/ivoyager">twitter</a></li>
+    <li><a href="https://www.facebook.com/ilyaschurov">facebook</a></li>
+    <li><a href="http://github.com/ischurov/pythonvjs">github</a></li>
+</ul>
 </div>
 </div>
 </body>

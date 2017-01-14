@@ -22,7 +22,10 @@ translations = {
     'Topics': 'Темы',
     'Russian': 'Русский (Russian)',
     'English': 'Английский (English)',
-    'require': 'требует'
+    'require': 'требует',
+    'reference': 'ссылка',
+    'Links': 'Ссылки',
+    'blog': 'блог',
 }
 @app.route("/")
 def show_default():
