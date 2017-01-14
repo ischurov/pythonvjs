@@ -1,0 +1,607 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dicts / objects
+ — python-v-js</title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD" crossorigin="anonymous">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    a {
+    color: #3b8bba; /* block-background-text-normal */
+    text-decoration: none;
+}
+    .require {
+        color: #777;
+        font-size: 75%;
+    }
+
+    a.ref {
+       font-size: 75%;
+    }
+
+    p, h1, h2, h3 {
+        margin: 15px 15px;
+    }
+
+    h1.sidebar {
+        font-size: 120%;
+    }
+    .comment {
+        color: #555;
+        font-size: 85%;
+        border-left: 10px solid #ddd;
+        background-color: #f7f7f7;
+        margin: 1.5em 0px;
+        padding: 0.01em 0px;
+    }
+
+    .pure-table {
+        border: 0px;
+        table-layout: fixed;
+        width: 100%;
+    }
+
+    td.what {
+            color: #333;
+            text-align: center;
+            border-top: 1px solid #cbcbcb;
+            padding-top: 1em;
+            font-weight: bold;
+
+        }
+
+    a:visited {
+        color: #265778; /* block-normal-text-normal */
+    }
+
+    pre.output {
+       /* background-color:#edffed; */
+        padding: 0em;
+        margin-top: 0em;
+    }
+
+        a.section-link {
+            color: #aaaaaa;
+        }
+
+        a.section-link:hover {
+            color: #3b8bba;
+        }
+
+        a.section-link:focus {
+            outline-width: 0px;
+            outline-style: none;
+        }
+
+        div.sidebar {
+            position: fixed;
+        }
+
+</style>
+
+
+</head>
+<body>
+<div class="pure-g">
+    <div class="pure-u-4-5">
+    <h1>
+        Python.v.JavaScript
+    </h1>
+    <h2>
+        JavaScript for Pythonistas. Python for JavaScripters
+    </h2>
+    <h3>
+        Dicts / objects
+
+    </h3>
+        
+        <p>The standard structure to store elements accessible by arbitrary keys
+(mapping) in Python is called a <code>dict</code> (<em>dictionary</em>) and in JavaScript
+— <code>object</code>.</p>
+
+        
+<table class="pure-table">
+    <tr>
+        <th>Python</th>
+        <th>Javascript</th>
+    </tr>
+    
+        
+           
+        
+           
+                <tr>
+                <td colspan="2" class="what">
+                Creation of dictionary / object
+
+                    
+                    <a href="#dict-object-creation" id="dict-object-creation" class="section-link">#</a>
+                    
+                </td>
+                </tr>
+           
+        
+        <tr>
+            <td>
+                
+    
+        
+            <pre><code class="python">my_dict = {&#39;a&#39;: 10, &#39;b&#39;: 20}
+my_dict[&#39;a&#39;]</code></pre>
+        
+    
+        
+            <pre class="output">10</pre>
+        
+    
+        
+            <pre><code class="python">my_dict.a
+</code></pre>
+        
+    
+        
+            <pre class="output">Exception: AttributeError
+&#39;dict&#39; object has no attribute &#39;a&#39;
+</pre>
+        
+    
+    
+    
+    
+    
+
+            </td>
+            <td>
+                
+    
+        
+            <pre><code class="javascript">var my_obj = {a: 10, b: 20};
+my_obj[&#39;a&#39;]</code></pre>
+        
+    
+        
+            <pre class="output">10
+</pre>
+        
+    
+        
+            <pre><code class="javascript">my_obj.a</code></pre>
+        
+    
+        
+            <pre class="output">10
+</pre>
+        
+    
+        
+    
+        
+    
+    
+    
+    
+        <div class="comment"><p>You can access elements of an object either with square brackets
+or with dot-notation.</p>
+</div>
+    
+    
+        <hr/>
+    
+
+    
+        
+            <pre><code class="javascript">var my_obj = {&#39;long key&#39;: &#39;some value&#39;, 
+               short_key: &#39;other value&#39;}
+my_obj[&#39;long key&#39;]</code></pre>
+        
+    
+        
+            <pre class="output">some value
+</pre>
+        
+    
+        
+            <pre><code class="javascript">my_obj[&#39;short_key&#39;]</code></pre>
+        
+    
+        
+            <pre class="output">other value
+</pre>
+        
+    
+        
+            <pre><code class="javascript">my_obj.short_key</code></pre>
+        
+    
+        
+            <pre class="output">other value
+</pre>
+        
+    
+    
+    
+    
+    
+
+            </td>
+        </tr>
+    
+        
+           
+        
+           
+                <tr>
+                <td colspan="2" class="what">
+                Modification of a value in dictionary / object
+
+                    
+                    <a href="#modification-of-element" id="modification-of-element" class="section-link">#</a>
+                    
+                </td>
+                </tr>
+           
+        
+        <tr>
+            <td>
+                
+    
+        
+            <pre><code class="python">my_dict = {&#39;a&#39;: 10, &#39;b&#39;: 20}
+my_dict[&#39;a&#39;] = &#39;hello&#39;
+my_dict[&#39;a&#39;]</code></pre>
+        
+    
+        
+            <pre class="output">&#39;hello&#39;</pre>
+        
+    
+    
+    
+    
+    
+
+            </td>
+            <td>
+                
+    
+        
+            <pre><code class="javascript">var my_obj = {a: 10, b: 20};
+my_obj[&#39;a&#39;] = &#39;hello&#39;;
+my_obj[&#39;a&#39;]</code></pre>
+        
+    
+        
+            <pre class="output">hello
+</pre>
+        
+    
+    
+    
+    
+    
+        <hr/>
+    
+
+    
+        
+            <pre><code class="javascript">var my_obj = {a: 10, b: 20};
+my_obj.a = &#39;hello&#39;;
+my_obj[&#39;a&#39;]</code></pre>
+        
+    
+        
+            <pre class="output">hello
+</pre>
+        
+    
+        
+    
+        
+    
+    
+    
+    
+        <div class="comment"><p>Two ways of access (square brackets and dot-notation) gives
+the same element.</p>
+</div>
+    
+    
+
+            </td>
+        </tr>
+    
+        
+           
+        
+           
+                <tr>
+                <td colspan="2" class="what">
+                Non-string keys
+
+                    
+                    <a href="#non-string-keys" id="non-string-keys" class="section-link">#</a>
+                    
+                </td>
+                </tr>
+           
+        
+        <tr>
+            <td>
+                
+    
+        
+            <pre><code class="python">my_dict = {}
+my_dict[5] = &#39;hello&#39;
+my_dict[&#39;5&#39;] = &#39;world&#39;
+my_dict</code></pre>
+        
+    
+        
+            <pre class="output">{&#39;5&#39;: &#39;world&#39;, 5: &#39;hello&#39;}</pre>
+        
+    
+    
+    
+    
+    
+
+            </td>
+            <td>
+                
+    
+        
+            <pre><code class="javascript">var my_obj = {};
+my_obj[5] = &#39;hello&#39;;
+my_obj[&#39;5&#39;] = &#39;world&#39;;
+my_obj</code></pre>
+        
+    
+        
+            <pre class="output">{ &#39;5&#39;: &#39;world&#39; }
+</pre>
+        
+    
+        
+            <pre><code class="javascript">my_obj[ [&#39;5&#39;] ]</code></pre>
+        
+    
+        
+            <pre class="output">world
+</pre>
+        
+    
+        
+    
+        
+    
+    
+    
+    
+        <div class="comment"><p>Keys of elements in JavaScript object has to be string. Any
+other key will be coerced to string.</p>
+</div>
+    
+    
+
+            </td>
+        </tr>
+    
+        
+           
+        
+           
+                <tr>
+                <td colspan="2" class="what">
+                Check if element with given key exists
+
+                    
+                    <a href="#in-dict-obj" id="in-dict-obj" class="section-link">#</a>
+                    
+                </td>
+                </tr>
+           
+        
+        <tr>
+            <td>
+                
+    
+        
+            <pre><code class="python">my_dict = {&#39;a&#39;: 10, &#39;b&#39;: 20}
+&#39;a&#39; in my_dict</code></pre>
+        
+    
+        
+            <pre class="output">True</pre>
+        
+    
+    
+    
+    
+    
+
+            </td>
+            <td>
+                
+    
+        
+            <pre><code class="javascript">my_obj = {a: 10, b: 20};
+&#39;a&#39; in my_obj</code></pre>
+        
+    
+        
+            <pre class="output">true
+</pre>
+        
+    
+    
+    
+    
+    
+
+            </td>
+        </tr>
+    
+        
+           
+        
+           
+                <tr>
+                <td colspan="2" class="what">
+                Access to non-existent key
+
+                    
+                    <a href="#non-existent-key" id="non-existent-key" class="section-link">#</a>
+                    
+                </td>
+                </tr>
+           
+        
+        <tr>
+            <td>
+                
+    
+        
+            <pre><code class="python">my_dict = {&#39;a&#39;: 10, &#39;b&#39;: 20}
+my_dict[&#39;c&#39;]
+</code></pre>
+        
+    
+        
+            <pre class="output">Exception: KeyError
+&#39;c&#39;
+</pre>
+        
+    
+        
+            <pre><code class="python">my_dict.get(&#39;c&#39;)</code></pre>
+        
+    
+        
+            <pre class="output">None</pre>
+        
+    
+        
+            <pre><code class="python">my_dict.get(&#39;c&#39;, &#39;Nothing&#39;)</code></pre>
+        
+    
+        
+            <pre class="output">&#39;Nothing&#39;</pre>
+        
+    
+    
+    
+    
+    
+
+            </td>
+            <td>
+                
+    
+        
+            <pre><code class="javascript">my_obj = {&#39;a&#39;: 10, &#39;b&#39;: 20};
+my_obj[&#39;c&#39;]</code></pre>
+        
+    
+        
+            <pre class="output">undefined
+</pre>
+        
+    
+        
+            <pre><code class="javascript">my_obj.c</code></pre>
+        
+    
+        
+            <pre class="output">undefined
+</pre>
+        
+    
+    
+    
+    
+    
+
+            </td>
+        </tr>
+    
+</table>
+    <div style="text-align: center; font-size: 80%; color: #aaaaaa; margin:0.5em;">
+© Ilya V. Schurov, 2017<br/>
+        Licenses: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY</a> (text),
+        <a href="https://opensource.org/licenses/MIT">MIT</a> (code).<br/>
+        <a href="http://github.com/ischurov/pythonvjs">contribute on github</a>
+</div>
+
+        </div>
+<div class="pure-u-1-5 sidebar">
+<h1 class="sidebar"> Language</h1>
+<ul>
+    
+    <li>
+        <a href="/pythonvjs/show/dicts-objects/en/">
+            English
+        </a>
+    </li>
+    
+    <li>
+        <a href="/pythonvjs/show/dicts-objects/ru/">
+            Russian
+        </a>
+    </li>
+    
+</ul>
+<h1 class="sidebar">Topics</h1>
+<ul>
+
+    <li>
+<a href="/pythonvjs/show/lists-arrays/en/">
+    Lists / arrays
+
+</a>
+    </li>
+
+    
+    <li>
+<a href="/pythonvjs/show/loop-for/en/">
+    For loop
+
+</a>
+    </li>
+
+    
+    <li>
+<a href="/pythonvjs/show/dicts-objects/en/">
+    Dicts / objects
+
+</a>
+    </li>
+
+    
+    <li>
+<a href="/pythonvjs/show/scopes/en/">
+    Scopes
+
+</a>
+    </li>
+
+    
+    <li>
+<a href="/pythonvjs/show/types/en/">
+    Types
+
+</a>
+    </li>
+
+    
+    </ul>
+
+</div>
+</div>
+</body>
+</html>

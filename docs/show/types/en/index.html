@@ -1,0 +1,707 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Types
+ — python-v-js</title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD" crossorigin="anonymous">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    a {
+    color: #3b8bba; /* block-background-text-normal */
+    text-decoration: none;
+}
+    .require {
+        color: #777;
+        font-size: 75%;
+    }
+
+    a.ref {
+       font-size: 75%;
+    }
+
+    p, h1, h2, h3 {
+        margin: 15px 15px;
+    }
+
+    h1.sidebar {
+        font-size: 120%;
+    }
+    .comment {
+        color: #555;
+        font-size: 85%;
+        border-left: 10px solid #ddd;
+        background-color: #f7f7f7;
+        margin: 1.5em 0px;
+        padding: 0.01em 0px;
+    }
+
+    .pure-table {
+        border: 0px;
+        table-layout: fixed;
+        width: 100%;
+    }
+
+    td.what {
+            color: #333;
+            text-align: center;
+            border-top: 1px solid #cbcbcb;
+            padding-top: 1em;
+            font-weight: bold;
+
+        }
+
+    a:visited {
+        color: #265778; /* block-normal-text-normal */
+    }
+
+    pre.output {
+       /* background-color:#edffed; */
+        padding: 0em;
+        margin-top: 0em;
+    }
+
+        a.section-link {
+            color: #aaaaaa;
+        }
+
+        a.section-link:hover {
+            color: #3b8bba;
+        }
+
+        a.section-link:focus {
+            outline-width: 0px;
+            outline-style: none;
+        }
+
+        div.sidebar {
+            position: fixed;
+        }
+
+</style>
+
+
+</head>
+<body>
+<div class="pure-g">
+    <div class="pure-u-4-5">
+    <h1>
+        Python.v.JavaScript
+    </h1>
+    <h2>
+        JavaScript for Pythonistas. Python for JavaScripters
+    </h2>
+    <h3>
+        Types
+
+    </h3>
+        
+        <p>Python and Javascript are both languages with dynamical types. Variables
+do not have types but the values have. Type transformation (explicit and
+implicit) is a common source of surprises (especially if you are
+switching from Python to JavaScript).</p>
+
+        
+<table class="pure-table">
+    <tr>
+        <th>Python</th>
+        <th>Javascript</th>
+    </tr>
+    
+        
+           
+        
+           
+                <tr>
+                <td colspan="2" class="what">
+                Number and string coercion
+
+                    
+                    <a href="#number-string-coercion" id="number-string-coercion" class="section-link">#</a>
+                    
+                </td>
+                </tr>
+           
+        
+        <tr>
+            <td>
+                
+    
+        
+            <pre><code class="python">a = &#39;32&#39;
+b = 7
+a + b
+</code></pre>
+        
+    
+        
+            <pre class="output">Exception: TypeError
+Can&#39;t convert &#39;int&#39; object to str implicitly
+</pre>
+        
+    
+        
+            <pre><code class="python">a * b</code></pre>
+        
+    
+        
+            <pre class="output">&#39;32323232323232&#39;</pre>
+        
+    
+    
+    
+    
+    
+
+            </td>
+            <td>
+                
+    
+        
+            <pre><code class="javascript">a = &#39;32&#39;
+b = 7
+a + b</code></pre>
+        
+    
+        
+            <pre class="output">327
+</pre>
+        
+    
+        
+            <pre><code class="javascript">a - b</code></pre>
+        
+    
+        
+            <pre class="output">25
+</pre>
+        
+    
+        
+            <pre><code class="javascript">a * b</code></pre>
+        
+    
+        
+            <pre class="output">224
+</pre>
+        
+    
+        
+            <pre><code class="javascript">a / b</code></pre>
+        
+    
+        
+            <pre class="output">4.571428571428571
+</pre>
+        
+    
+    
+    
+    
+    
+
+            </td>
+        </tr>
+    
+        
+           
+                <tr>
+                <td colspan="2" class="what">
+                List /array to string coercion
+
+                    
+                    <a href="#list-array-coercion" id="list-array-coercion" class="section-link">#</a>
+                    
+                </td>
+                </tr>
+           
+        
+           
+        
+        <tr>
+            <td>
+                
+    
+        
+            <pre><code class="python">first_list = [1, 2, 10]
+second_list = [5, 3]
+first_list + second_list</code></pre>
+        
+    
+        
+            <pre class="output">[1, 2, 10, 5, 3]</pre>
+        
+    
+    
+    
+    
+    
+
+            </td>
+            <td>
+                
+    
+        
+            <pre><code class="javascript">var first_array = [1, 2, 10]
+var second_array = [5, 3]
+first_array + second_array</code></pre>
+        
+    
+        
+            <pre class="output">1,2,105,3
+</pre>
+        
+    
+        
+    
+        
+    
+    
+    
+    
+        <div class="comment"><p>Ooops. What's that? If operator <code>+</code> cannot make an addition
+(i.e. its arguments are not numbers), it coerces all the
+arguments to strings and then concatenate it (as strings).</p>
+</div>
+    
+    
+        <hr/>
+    
+
+    
+        
+            <pre><code class="javascript">var first_array = [1, 2, 10]
+var second_array = [5, 3]
+first_array.concat(second_array)</code></pre>
+        
+    
+        
+            <pre class="output">[ 1, 2, 10, 5, 3 ]
+</pre>
+        
+    
+    
+    
+    
+    
+
+            </td>
+        </tr>
+    
+        
+           
+        
+           
+                <tr>
+                <td colspan="2" class="what">
+                Comparison and coercion
+
+                    
+                    <a href="#comparison-and-coercion" id="comparison-and-coercion" class="section-link">#</a>
+                    
+                </td>
+                </tr>
+           
+        
+        <tr>
+            <td>
+                
+    
+        
+            <pre><code class="python">a = &#39;12&#39;
+b = 12
+if a == b:
+    print(&#34;a is equal to b&#34;)
+else:
+    print(&#34;a is not equal to b&#34;)
+if str(a) == str(b):
+    print(&#34;str(a) is equal to str(b)&#34;)
+if int(a) == int(b):
+    print(&#34;int(a) is equal to int(b)&#34;)
+</code></pre>
+        
+    
+        
+            <pre class="output">a is not equal to b
+str(a) is equal to str(b)
+int(a) is equal to int(b)
+</pre>
+        
+    
+    
+    
+    
+    
+
+            </td>
+            <td>
+                
+    
+        
+            <pre><code class="javascript">var a = &#39;12&#39;;
+var b = 12;
+if (a == b) {
+    console.log(&#34;a is equal to b&#34;,
+                &#34;(coercions allowed)&#34;);
+}
+if (a === b) {
+    console.log(&#34;a is strictly equal to b&#34;, 
+                &#34;(coercions are not allowed)&#34;);
+}
+if (Number(a) === Number(b)) {
+    console.log(&#34;Number(a) is equal&#34;, 
+                &#34;to Number(b)&#34;);
+}
+if (String(a) === String(b)) {
+    console.log(&#34;String(a) is equal&#34;, 
+                &#34;to String(b)&#34;);
+}</code></pre>
+        
+    
+        
+            <pre class="output">a is equal to b (coercions allowed)
+Number(a) is equal to Number(b)
+String(a) is equal to String(b)
+</pre>
+        
+    
+    
+    
+    
+    
+
+            </td>
+        </tr>
+    
+        
+           
+        
+           
+                <tr>
+                <td colspan="2" class="what">
+                Edge cases in comparison
+
+                    
+                    <a href="#edge-cases-in-comparison" id="edge-cases-in-comparison" class="section-link">#</a>
+                    
+                </td>
+                </tr>
+           
+        
+        <tr>
+            <td>
+                
+    
+        
+            <pre><code class="python">[] == 0</code></pre>
+        
+    
+        
+            <pre class="output">False</pre>
+        
+    
+        
+            <pre><code class="python">[] == False</code></pre>
+        
+    
+        
+            <pre class="output">False</pre>
+        
+    
+        
+            <pre><code class="python">&#34;&#34; == []</code></pre>
+        
+    
+        
+            <pre class="output">False</pre>
+        
+    
+        
+            <pre><code class="python">&#34;&#34; == 0</code></pre>
+        
+    
+        
+            <pre class="output">False</pre>
+        
+    
+    
+    
+    
+    
+
+            </td>
+            <td>
+                
+    
+        
+            <pre><code class="javascript">[] == 0</code></pre>
+        
+    
+        
+            <pre class="output">true
+</pre>
+        
+    
+        
+            <pre><code class="javascript">[] == false</code></pre>
+        
+    
+        
+            <pre class="output">true
+</pre>
+        
+    
+        
+            <pre><code class="javascript">&#34;&#34; == []</code></pre>
+        
+    
+        
+            <pre class="output">true
+</pre>
+        
+    
+        
+            <pre><code class="javascript">&#34;&#34; == 0</code></pre>
+        
+    
+        
+            <pre class="output">true
+</pre>
+        
+    
+    
+    
+    
+    
+
+            </td>
+        </tr>
+    
+        
+           
+        
+           
+                <tr>
+                <td colspan="2" class="what">
+                Numeric types
+
+                    
+                    <a href="#numeric-types" id="numeric-types" class="section-link">#</a>
+                    
+                </td>
+                </tr>
+           
+        
+        <tr>
+            <td>
+                
+    
+        
+            <pre><code class="python">a = 2
+b = 2.0
+type(a)</code></pre>
+        
+    
+        
+            <pre class="output">&lt;class &#39;int&#39;&gt;</pre>
+        
+    
+        
+            <pre><code class="python">type(b)</code></pre>
+        
+    
+        
+            <pre class="output">&lt;class &#39;float&#39;&gt;</pre>
+        
+    
+        
+            <pre><code class="python">a == b</code></pre>
+        
+    
+        
+            <pre class="output">True</pre>
+        
+    
+        
+            <pre><code class="python">type(a) == type(b)</code></pre>
+        
+    
+        
+            <pre class="output">False</pre>
+        
+    
+        
+            <pre><code class="python">my_list = [0, 10, 20, 30]
+my_list[b]
+</code></pre>
+        
+    
+        
+            <pre class="output">Exception: TypeError
+list indices must be integers or slices, not float
+</pre>
+        
+    
+        
+    
+        
+    
+    
+    
+    
+        <div class="comment"><p>Python has integer (<code>int</code>) and floating point (<code>float</code>) numbers.
+In some context, only one of this types is acceptable (i.e.
+index of list has to be integer number).</p>
+</div>
+    
+    
+
+            </td>
+            <td>
+                
+    
+        
+            <pre><code class="javascript">var a = 2;
+var b = 2.0;
+typeof(a)</code></pre>
+        
+    
+        
+            <pre class="output">number
+</pre>
+        
+    
+        
+            <pre><code class="javascript">typeof(b)</code></pre>
+        
+    
+        
+            <pre class="output">number
+</pre>
+        
+    
+        
+            <pre><code class="javascript">a === b</code></pre>
+        
+    
+        
+            <pre class="output">true
+</pre>
+        
+    
+        
+            <pre><code class="javascript">typeof(a) === typeof(b)</code></pre>
+        
+    
+        
+            <pre class="output">true
+</pre>
+        
+    
+        
+            <pre><code class="javascript">var my_array = [0, 10, 20, 30]
+my_array[b]</code></pre>
+        
+    
+        
+            <pre class="output">20
+</pre>
+        
+    
+        
+    
+        
+    
+    
+    
+    
+        <div class="comment"><p>In JavaScript, there's no distinction between integers and
+floating point numbers. In fact, all numbers are floating
+points.</p>
+</div>
+    
+    
+
+            </td>
+        </tr>
+    
+</table>
+    <div style="text-align: center; font-size: 80%; color: #aaaaaa; margin:0.5em;">
+© Ilya V. Schurov, 2017<br/>
+        Licenses: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY</a> (text),
+        <a href="https://opensource.org/licenses/MIT">MIT</a> (code).<br/>
+        <a href="http://github.com/ischurov/pythonvjs">contribute on github</a>
+</div>
+
+        </div>
+<div class="pure-u-1-5 sidebar">
+<h1 class="sidebar"> Language</h1>
+<ul>
+    
+    <li>
+        <a href="/pythonvjs/show/types/en/">
+            English
+        </a>
+    </li>
+    
+    <li>
+        <a href="/pythonvjs/show/types/ru/">
+            Russian
+        </a>
+    </li>
+    
+</ul>
+<h1 class="sidebar">Topics</h1>
+<ul>
+
+    <li>
+<a href="/pythonvjs/show/lists-arrays/en/">
+    Lists / arrays
+
+</a>
+    </li>
+
+    
+    <li>
+<a href="/pythonvjs/show/loop-for/en/">
+    For loop
+
+</a>
+    </li>
+
+    
+    <li>
+<a href="/pythonvjs/show/dicts-objects/en/">
+    Dicts / objects
+
+</a>
+    </li>
+
+    
+    <li>
+<a href="/pythonvjs/show/scopes/en/">
+    Scopes
+
+</a>
+    </li>
+
+    
+    <li>
+<a href="/pythonvjs/show/types/en/">
+    Types
+
+</a>
+    </li>
+
+    
+    </ul>
+
+</div>
+</div>
+</body>
+</html>

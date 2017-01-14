@@ -1,0 +1,367 @@
+
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Области видимости
+ — python-v-js</title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD" crossorigin="anonymous">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    a {
+    color: #3b8bba; /* block-background-text-normal */
+    text-decoration: none;
+}
+    .require {
+        color: #777;
+        font-size: 75%;
+    }
+
+    a.ref {
+       font-size: 75%;
+    }
+
+    p, h1, h2, h3 {
+        margin: 15px 15px;
+    }
+
+    h1.sidebar {
+        font-size: 120%;
+    }
+    .comment {
+        color: #555;
+        font-size: 85%;
+        border-left: 10px solid #ddd;
+        background-color: #f7f7f7;
+        margin: 1.5em 0px;
+        padding: 0.01em 0px;
+    }
+
+    .pure-table {
+        border: 0px;
+        table-layout: fixed;
+        width: 100%;
+    }
+
+    td.what {
+            color: #333;
+            text-align: center;
+            border-top: 1px solid #cbcbcb;
+            padding-top: 1em;
+            font-weight: bold;
+
+        }
+
+    a:visited {
+        color: #265778; /* block-normal-text-normal */
+    }
+
+    pre.output {
+       /* background-color:#edffed; */
+        padding: 0em;
+        margin-top: 0em;
+    }
+
+        a.section-link {
+            color: #aaaaaa;
+        }
+
+        a.section-link:hover {
+            color: #3b8bba;
+        }
+
+        a.section-link:focus {
+            outline-width: 0px;
+            outline-style: none;
+        }
+
+        div.sidebar {
+            position: fixed;
+        }
+
+</style>
+
+
+</head>
+<body>
+<div class="pure-g">
+    <div class="pure-u-4-5">
+    <h1>
+        Python.v.JavaScript
+    </h1>
+    <h2>
+        JavaScript for Pythonistas. Python for JavaScripters
+    </h2>
+    <h3>
+        Области видимости
+
+    </h3>
+        
+        <p>Имена переменных (в т.ч. функций) в Python и JavaScript могут
+принадлежать разным областям видимости (<em>scopes</em>). Например, локальная
+переменная, определенная внутри функции, недоступна извне этой функции.</p>
+
+        
+<table class="pure-table">
+    <tr>
+        <th>Python</th>
+        <th>Javascript</th>
+    </tr>
+    
+        
+           
+                <tr>
+                <td colspan="2" class="what">
+                Область видимости по умолчанию
+
+                    
+                    <a href="#default-variable-scope" id="default-variable-scope" class="section-link">#</a>
+                    
+                </td>
+                </tr>
+           
+        
+           
+        
+        <tr>
+            <td>
+                
+    
+        
+            <pre><code class="python">x = 1
+def fun():
+    x = 2
+    print(&#34;Inside function, x =&#34;, x)
+fun()
+print(&#34;Outside function, x =&#34;, x)
+</code></pre>
+        
+    
+        
+            <pre class="output">Inside function, x = 2
+Outside function, x = 1
+</pre>
+        
+    
+        
+    
+        
+    
+    
+    
+    
+        <div class="comment"><p>По умолчанию, переменная, создаваемая внутри функции, является
+локальной.</p>
+</div>
+    
+    
+        <hr/>
+    
+
+    
+        
+            <pre><code class="python">x = 1
+def fun():
+    global x
+    x = 2
+    print(&#34;Inside function, x =&#34;, x)
+fun()
+print(&#34;Outside function, x =&#34;, x)
+</code></pre>
+        
+    
+        
+            <pre class="output">Inside function, x = 2
+Outside function, x = 2
+</pre>
+        
+    
+        
+    
+        
+    
+    
+    
+    
+        <div class="comment"><p>Чтобы иметь возможность модифицировать глобальную переменную
+изнутри функции, нужно использовать ключевое
+слово <code>global</code>.</p>
+</div>
+    
+    
+
+            </td>
+            <td>
+                
+    
+        
+    
+        
+    
+        
+            <pre><code class="javascript">x = 1;
+function fun() {
+    x = 2;
+    console.log(&#34;Inside function, x =&#34;, x)
+}
+fun();
+console.log(&#34;Outside function, x =&#34;, x)</code></pre>
+        
+    
+        
+            <pre class="output">Inside function, x = 2
+Outside function, x = 2
+</pre>
+        
+    
+    
+    
+    
+        <div class="comment"><p>При создании переменной внутри функции в JavaScript по умолчанию
+она помещается в глобальный фрейм. Для создания локальной
+переменной необходимо использовать команду <code>var</code>.</p>
+</div>
+    
+    
+        <hr/>
+    
+
+    
+        
+            <pre><code class="javascript">x = 1; // global x
+function fun() {
+    var x = 2; // local x
+    console.log(&#34;Inside function, x =&#34;, x)
+}
+fun();
+console.log(&#34;Outside function, x =&#34;, x)</code></pre>
+        
+    
+        
+            <pre class="output">Inside function, x = 2
+Outside function, x = 1
+</pre>
+        
+    
+    
+    
+    
+    
+        <hr/>
+    
+
+    
+        
+    
+        
+    
+        
+            <pre><code class="javascript">function sum_of_numbers(k) {
+    var s=0;
+    for (i=0; i&lt;k; i++) {
+        s += i
+    }
+    return s
+}
+i = 5;
+console.log(&#34;Sum of numbers from 1 to 100 is&#34;, 
+            sum_of_numbers(101));
+console.log(&#34;And i =&#34;, i);</code></pre>
+        
+    
+        
+            <pre class="output">Sum of numbers from 1 to 100 is 5050
+And i = 101
+</pre>
+        
+    
+    
+    
+    
+        <div class="comment"><p>Забыли объявить переменную <code>i</code> — и вот результат.</p>
+</div>
+    
+    
+
+            </td>
+        </tr>
+    
+</table>
+    <div style="text-align: center; font-size: 80%; color: #aaaaaa; margin:0.5em;">
+© Ilya V. Schurov, 2017<br/>
+        Licenses: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY</a> (text),
+        <a href="https://opensource.org/licenses/MIT">MIT</a> (code).<br/>
+        <a href="http://github.com/ischurov/pythonvjs">contribute on github</a>
+</div>
+
+        </div>
+<div class="pure-u-1-5 sidebar">
+<h1 class="sidebar"> Язык</h1>
+<ul>
+    
+    <li>
+        <a href="/pythonvjs/show/scopes/en/">
+            Английский (English)
+        </a>
+    </li>
+    
+    <li>
+        <a href="/pythonvjs/show/scopes/ru/">
+            Русский (Russian)
+        </a>
+    </li>
+    
+</ul>
+<h1 class="sidebar">Темы</h1>
+<ul>
+
+    <li>
+<a href="/pythonvjs/show/lists-arrays/ru/">
+    Списки / массивы
+
+</a>
+    </li>
+
+    
+    <li>
+<a href="/pythonvjs/show/loop-for/ru/">
+    Цикл for
+
+</a>
+    </li>
+
+    
+    <li>
+<a href="/pythonvjs/show/dicts-objects/ru/">
+    Словари / объекты
+
+</a>
+    </li>
+
+    
+    <li>
+<a href="/pythonvjs/show/scopes/ru/">
+    Области видимости
+
+</a>
+    </li>
+
+    
+    <li>
+<a href="/pythonvjs/show/types/ru/">
+    Типы
+
+</a>
+    </li>
+
+    
+    </ul>
+
+</div>
+</div>
+</body>
+</html>
