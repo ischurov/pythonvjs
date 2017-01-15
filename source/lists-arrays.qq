@@ -187,7 +187,7 @@
             \out my_array[1]
             \out my_array.length
             \comment \lang ru
-                См. также [манипуляции со срезами](#splices).
+                См. также [манипуляции с фрагментами](#splices).
             \comment \lang en
                 See also [splices](#splices).
     \compare
