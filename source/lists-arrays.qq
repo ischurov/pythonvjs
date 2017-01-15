@@ -186,7 +186,10 @@
             \out my_array
             \out my_array[1]
             \out my_array.length
-
+            \comment \lang ru
+                См. также [манипуляции со срезами](#splices).
+            \comment \lang en
+                See also [splices](#splices).
     \compare
         \id clear-list
         \what \lang ru
@@ -231,9 +234,9 @@
     \compare
         \id check-in
         \what \lang ru
-            Проверить наличие элемента в списке
+            Оператор in
         \what \lang en
-            Check if element in the list
+            Operator in
         \python
             my_list = [1, 7, 10]
             \out 1 in my_list
@@ -241,6 +244,31 @@
             \out 10 in my_list
             \out 2 in my_list
             \out "1" in my_list
+            \comment \lang ru
+                Оператор `in` для списков проверяет, находится ли элемент в
+                списке.
+            \comment \lang en
+                Operator `in` for lists checks if element exist in the list.
+        \python
+            list_like_dict = {
+                0: 1,
+                1: 7,
+                2: 10
+            }
+            \out 1 in list_like_dict
+            \out 7 in list_like_dict
+            \out 10 in list_like_dict
+            \out 2 in list_like_dict
+            \out "1" in list_like_dict
+            \comment \lang ru
+                Если сделать словарь, похожий на список (с числовыми ключами),
+                то оператор `in` будет проверять, находится ли данный элемент
+                среди индексов (как это всегда происходит со словарями).
+                Примерно так работает аналогичный оператор в JavaScript.
+            \comment \lang en
+                If one creates a list-like dictionary (with numeric keys), `in`
+                operator checks whether element exist among indexes (just like
+                with any other dict). This is roughly like JavaScript do.
         \js
             var my_array = [1, 7, 10];
             \out 1 in my_array
@@ -290,4 +318,38 @@
                 There's no slices with step (third argument in Python's) by
                 default in JavaScript.
             \ref https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/slice
-                
+    \compare
+        \id splices
+        \what \lang ru
+            Манипуляции с фрагментами
+        \what \lang en
+            Splice modifications
+        \python
+            my_list = [0, 10, 20, 30]
+            my_list[2:4] = [200, 300, 400]
+            \out my_list
+            my_list[1:2] = []
+            \out my_list
+            my_list[3:3] = [999]
+            \out my_list
+        \js
+            var my_array = [0, 10, 20, 30];
+            var deleted;
+            deleted = my_array.splice(2, 2, 200, 300, 400);
+            \out my_array
+            \out deleted
+            my_array.splice(1, 1);
+            \out my_array
+            my_array.splice(3, 0, 999);
+            \out my_array
+            \comment \lang ru
+                Метод `splice(start, deleteCount, item1, item2, ...)`
+                редактирует массив in place: удаляет `deleteCount` элементов,
+                начиная с `start`, затем добавляет элементы `item1`, `item2`,
+                и т.д.
+            \comment \lang en
+                Method `splice(start, deleteCount, item1, item2, ...)` edits
+                array in place: deletes `deleteCount` elements, beginning from
+                `start`, then add elements `item1`, `item2` and so on.
+            \ref 
+                https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/splice

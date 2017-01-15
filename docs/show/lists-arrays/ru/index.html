@@ -151,7 +151,7 @@ my_list</code></pre>
     
         
             <pre><code class="javascript">var my_array = [3, 2, 10, &#34;Hello&#34;]
-my_array</code></pre>
+my_array;</code></pre>
         
     
         
@@ -222,7 +222,7 @@ my_list[0]</code></pre>
     
         
             <pre><code class="javascript">var my_array = [3, 2, 10, &#34;Hello&#34;]
-my_array[0]</code></pre>
+my_array[0];</code></pre>
         
     
         
@@ -231,7 +231,7 @@ my_array[0]</code></pre>
         
     
         
-            <pre><code class="javascript">my_array[1]</code></pre>
+            <pre><code class="javascript">my_array[1];</code></pre>
         
     
         
@@ -240,7 +240,7 @@ my_array[0]</code></pre>
         
     
         
-            <pre><code class="javascript">my_array[my_array.length-1]</code></pre>
+            <pre><code class="javascript">my_array[my_array.length-1];</code></pre>
         
     
         
@@ -298,7 +298,7 @@ list indices must be integers or slices, not str
     
         
             <pre><code class="javascript">var my_array = [2, 3, 10]
-my_array[&#34;0&#34;]</code></pre>
+my_array[&#34;0&#34;];</code></pre>
         
     
         
@@ -364,7 +364,7 @@ my_list</code></pre>
         
             <pre><code class="javascript">var my_array = [3, 2, 10, &#34;Hello&#34;]
 my_array[0] = 100
-my_array</code></pre>
+my_array;</code></pre>
         
     
         
@@ -419,7 +419,7 @@ len(my_list)</code></pre>
     
         
             <pre><code class="javascript">var my_array = [3, 2, 10, &#34;Hello&#34;]
-my_array.length</code></pre>
+my_array.length;</code></pre>
         
     
         
@@ -476,7 +476,7 @@ my_list</code></pre>
         
             <pre><code class="javascript">var my_array = [3, 2, 10, &#34;Hello&#34;]
 my_array.push(5)
-my_array</code></pre>
+my_array;</code></pre>
         
     
         
@@ -533,7 +533,7 @@ my_list</code></pre>
         
             <pre><code class="javascript">var my_array = [3, 2]
 my_array.push(12, 20)
-my_array</code></pre>
+my_array;</code></pre>
         
     
         
@@ -592,7 +592,7 @@ my_list</code></pre>
             <pre><code class="javascript">var my_array = [3, 2, 10, &#34;Hello&#34;]
 var other_array = [1, 2, 3]
 my_array.push.apply(my_array, other_array)
-my_array</code></pre>
+my_array;</code></pre>
         
     
         
@@ -616,7 +616,7 @@ my_array</code></pre>
             <pre><code class="javascript">var my_array = [3, 2, 10, &#34;Hello&#34;]
 var other = [1, 2, 3]
 Array.prototype.push.apply(my_array, other)
-my_array</code></pre>
+my_array;</code></pre>
         
     
         
@@ -648,7 +648,7 @@ my_array</code></pre>
 var my_array = [3, 2, 10, &#34;Hello&#34;]
 var other_array = [1, 2, 3]
 my_array.extend(other_array)
-my_array</code></pre>
+my_array;</code></pre>
         
     
         
@@ -760,7 +760,7 @@ my_list</code></pre>
         
             <pre><code class="javascript">var my_array = [2, 10, 15];
 delete my_array[1];
-my_array</code></pre>
+my_array;</code></pre>
         
     
         
@@ -769,7 +769,7 @@ my_array</code></pre>
         
     
         
-            <pre><code class="javascript">my_array[1]</code></pre>
+            <pre><code class="javascript">my_array[1];</code></pre>
         
     
         
@@ -778,7 +778,7 @@ my_array</code></pre>
         
     
         
-            <pre><code class="javascript">my_array.length</code></pre>
+            <pre><code class="javascript">my_array.length;</code></pre>
         
     
         
@@ -786,8 +786,15 @@ my_array</code></pre>
 </pre>
         
     
+        
+    
+        
     
     
+    
+    
+        <div class="comment"><p>См. также <a href="#splices">манипуляции со срезами</a>.</p>
+</div>
     
     
 
@@ -835,7 +842,7 @@ my_list</code></pre>
         
             <pre><code class="javascript">var my_array = [1, 2, 10]
 my_array.length = 0
-my_array</code></pre>
+my_array;</code></pre>
         
     
         
@@ -893,7 +900,7 @@ list index out of range
     
         
             <pre><code class="javascript">var my_array = [1, 20, 10]
-my_array[3]</code></pre>
+my_array[3];</code></pre>
         
     
         
@@ -952,7 +959,7 @@ list assignment index out of range
         
             <pre><code class="javascript">var my_array = [1, 2, 10]
 my_array[5] = 100
-my_array</code></pre>
+my_array;</code></pre>
         
     
         
@@ -961,7 +968,7 @@ my_array</code></pre>
         
     
         
-            <pre><code class="javascript">my_array[3]</code></pre>
+            <pre><code class="javascript">my_array[3];</code></pre>
         
     
         
@@ -970,7 +977,7 @@ my_array</code></pre>
         
     
         
-            <pre><code class="javascript">my_array[5]</code></pre>
+            <pre><code class="javascript">my_array[5];</code></pre>
         
     
         
@@ -990,7 +997,7 @@ my_array</code></pre>
            
                 <tr>
                 <td colspan="2" class="what">
-                Проверить наличие элемента в списке
+                Оператор in
 
                     
                     <a href="#check-in" id="check-in" class="section-link">#</a>
@@ -1046,8 +1053,79 @@ my_array</code></pre>
             <pre class="output">False</pre>
         
     
+        
+    
+        
     
     
+    
+    
+        <div class="comment"><p>Оператор <code>in</code> для списков проверяет, находится ли элемент в
+списке.</p>
+</div>
+    
+    
+        <hr/>
+    
+
+    
+        
+            <pre><code class="python">list_like_dict = {
+    0: 1,
+    1: 7,
+    2: 10
+}
+1 in list_like_dict</code></pre>
+        
+    
+        
+            <pre class="output">True</pre>
+        
+    
+        
+            <pre><code class="python">7 in list_like_dict</code></pre>
+        
+    
+        
+            <pre class="output">False</pre>
+        
+    
+        
+            <pre><code class="python">10 in list_like_dict</code></pre>
+        
+    
+        
+            <pre class="output">False</pre>
+        
+    
+        
+            <pre><code class="python">2 in list_like_dict</code></pre>
+        
+    
+        
+            <pre class="output">True</pre>
+        
+    
+        
+            <pre><code class="python">&#34;1&#34; in list_like_dict</code></pre>
+        
+    
+        
+            <pre class="output">False</pre>
+        
+    
+        
+    
+        
+    
+    
+    
+    
+        <div class="comment"><p>Если сделать словарь, похожий на список (с числовыми ключами),
+то оператор <code>in</code> будет проверять, находится ли данный элемент
+среди индексов (как это всегда происходит со словарями).
+Примерно так работает аналогичный оператор в JavaScript.</p>
+</div>
     
     
 
@@ -1057,7 +1135,7 @@ my_array</code></pre>
     
         
             <pre><code class="javascript">var my_array = [1, 7, 10];
-1 in my_array</code></pre>
+1 in my_array;</code></pre>
         
     
         
@@ -1066,7 +1144,7 @@ my_array</code></pre>
         
     
         
-            <pre><code class="javascript">7 in my_array</code></pre>
+            <pre><code class="javascript">7 in my_array;</code></pre>
         
     
         
@@ -1075,7 +1153,7 @@ my_array</code></pre>
         
     
         
-            <pre><code class="javascript">10 in my_array</code></pre>
+            <pre><code class="javascript">10 in my_array;</code></pre>
         
     
         
@@ -1084,7 +1162,7 @@ my_array</code></pre>
         
     
         
-            <pre><code class="javascript">2 in my_array</code></pre>
+            <pre><code class="javascript">2 in my_array;</code></pre>
         
     
         
@@ -1093,7 +1171,7 @@ my_array</code></pre>
         
     
         
-            <pre><code class="javascript">&#34;1&#34; in my_array</code></pre>
+            <pre><code class="javascript">&#34;1&#34; in my_array;</code></pre>
         
     
         
@@ -1208,7 +1286,7 @@ my_list[2:4]</code></pre>
     
         
             <pre><code class="javascript">my_array = [0, 10, 20, 30, 40, 50, 60]
-my_array.slice(2, 4)</code></pre>
+my_array.slice(2, 4);</code></pre>
         
     
         
@@ -1217,7 +1295,7 @@ my_array.slice(2, 4)</code></pre>
         
     
         
-            <pre><code class="javascript">my_array.slice(null, 2)</code></pre>
+            <pre><code class="javascript">my_array.slice(null, 2);</code></pre>
         
     
         
@@ -1226,7 +1304,7 @@ my_array.slice(2, 4)</code></pre>
         
     
         
-            <pre><code class="javascript">my_array.slice(2)</code></pre>
+            <pre><code class="javascript">my_array.slice(2);</code></pre>
         
     
         
@@ -1235,7 +1313,7 @@ my_array.slice(2, 4)</code></pre>
         
     
         
-            <pre><code class="javascript">my_array.slice(2, -2)</code></pre>
+            <pre><code class="javascript">my_array.slice(2, -2);</code></pre>
         
     
         
@@ -1244,7 +1322,7 @@ my_array.slice(2, 4)</code></pre>
         
     
         
-            <pre><code class="javascript">my_array.slice()</code></pre>
+            <pre><code class="javascript">my_array.slice();</code></pre>
         
     
         
@@ -1265,6 +1343,125 @@ my_array.slice(2, 4)</code></pre>
     
         <div class="comment"><p>Срезов с шагом (третий аргумент в Python) в JavaScript по
 умолчанию нет.</p>
+</div>
+    
+    
+
+            </td>
+        </tr>
+    
+        
+           
+                <tr>
+                <td colspan="2" class="what">
+                Манипуляции с фрагментами
+
+                    
+                    <a href="#splices" id="splices" class="section-link">#</a>
+                    
+                </td>
+                </tr>
+           
+        
+           
+        
+        <tr>
+            <td>
+                
+    
+        
+            <pre><code class="python">my_list = [0, 10, 20, 30]
+my_list[2:4] = [200, 300, 400]
+my_list</code></pre>
+        
+    
+        
+            <pre class="output">[0, 10, 200, 300, 400]</pre>
+        
+    
+        
+            <pre><code class="python">my_list[1:2] = []
+my_list</code></pre>
+        
+    
+        
+            <pre class="output">[0, 200, 300, 400]</pre>
+        
+    
+        
+            <pre><code class="python">my_list[3:3] = [999]
+my_list</code></pre>
+        
+    
+        
+            <pre class="output">[0, 200, 300, 999, 400]</pre>
+        
+    
+    
+    
+    
+    
+
+            </td>
+            <td>
+                
+    
+        
+            <pre><code class="javascript">var my_array = [0, 10, 20, 30];
+var deleted;
+deleted = my_array.splice(2, 2, 200, 300, 400);
+my_array;</code></pre>
+        
+    
+        
+            <pre class="output">[ 0, 10, 200, 300, 400 ]
+</pre>
+        
+    
+        
+            <pre><code class="javascript">deleted;</code></pre>
+        
+    
+        
+            <pre class="output">[ 20, 30 ]
+</pre>
+        
+    
+        
+            <pre><code class="javascript">my_array.splice(1, 1);
+my_array;</code></pre>
+        
+    
+        
+            <pre class="output">[ 0, 200, 300, 400 ]
+</pre>
+        
+    
+        
+            <pre><code class="javascript">my_array.splice(3, 0, 999);
+my_array;</code></pre>
+        
+    
+        
+            <pre class="output">[ 0, 200, 300, 999, 400 ]
+</pre>
+        
+    
+        
+    
+        
+    
+        
+    
+    
+        <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/splice" class="ref">ссылка</a>
+    
+    
+    
+        <div class="comment"><p>Метод <code>splice(start, deleteCount, item1, item2, ...)</code>
+редактирует массив in place: удаляет <code>deleteCount</code> элементов,
+начиная с <code>start</code>, затем добавляет элементы <code>item1</code>, <code>item2</code>,
+и т.д.</p>
 </div>
     
     

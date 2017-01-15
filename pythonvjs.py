@@ -218,7 +218,8 @@ def process_js(tag: QqTag):
                 logger = "console.log({})".format(child.text_content)
                 res = node_exec(code + ";\n" + logger)
                 code_tag = QqTag("_code", [strip_blank_lines(
-                    "".join(current_chunk) + child.text_content)])
+                    "".join(current_chunk) +
+                    child.text_content.rstrip() + ";")])
                 current_chunk.clear()
                 codeblock.append_child(code_tag)
                 codeblock.append_child(QqTag("_output", [res]))
