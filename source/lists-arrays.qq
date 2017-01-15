@@ -266,9 +266,10 @@
                 среди индексов (как это всегда происходит со словарями).
                 Примерно так работает аналогичный оператор в JavaScript.
             \comment \lang en
-                If one creates a list-like dictionary (with numeric keys), `in`
-                operator checks whether element exist among indexes (just like
-                with any other dict). This is roughly like JavaScript do.
+                If one creates a list-like dictionary (with numeric keys),
+                operator `in` checks whether an element exist among indexes
+                (just like with any other dict). This is roughly like what
+                JavaScript do.
         \js
             var my_array = [1, 7, 10];
             \out 1 in my_array
