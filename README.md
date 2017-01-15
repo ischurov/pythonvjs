@@ -1,8 +1,8 @@
 # pythonvjs
-This project is aimed to provide comprehensive comparative tables of Python and
-JS syntax and language features.
+This project is aimed to provide comprehensive side-by-side comparison of Python
+and JavaScript syntax and language features.
 
-Current tables are available [here](http://ischurov.github.io/pythonvjs).
+The site is available [here](http://ischurov.github.io/pythonvjs).
 
 If you want to contribute, you can edit files in the `source` directory. It's in
 [qqmbr](http://github.com/ischurov/qqmbr) format, easy editable with
@@ -12,7 +12,7 @@ node.js for JS code).
 To preview, run 
 
 ```
-python pythonvjs.py`
+python pythonvjs.py
 ```
 
 To build statis version, do
