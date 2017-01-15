@@ -1370,13 +1370,13 @@ my_array.slice(2, 4);</code></pre>
                 
     
         
-            <pre><code class="python">my_list = [0, 10, 20, 30]
+            <pre><code class="python">my_list = [0, 10, 20, 30, 40]
 my_list[2:4] = [200, 300, 400]
 my_list</code></pre>
         
     
         
-            <pre class="output">[0, 10, 200, 300, 400]</pre>
+            <pre class="output">[0, 10, 200, 300, 400, 40]</pre>
         
     
         
@@ -1385,7 +1385,7 @@ my_list</code></pre>
         
     
         
-            <pre class="output">[0, 200, 300, 400]</pre>
+            <pre class="output">[0, 200, 300, 400, 40]</pre>
         
     
         
@@ -1394,7 +1394,7 @@ my_list</code></pre>
         
     
         
-            <pre class="output">[0, 200, 300, 999, 400]</pre>
+            <pre class="output">[0, 200, 300, 999, 400, 40]</pre>
         
     
     
@@ -1407,14 +1407,14 @@ my_list</code></pre>
                 
     
         
-            <pre><code class="javascript">var my_array = [0, 10, 20, 30];
+            <pre><code class="javascript">var my_array = [0, 10, 20, 30, 40];
 var deleted;
 deleted = my_array.splice(2, 2, 200, 300, 400);
 my_array;</code></pre>
         
     
         
-            <pre class="output">[ 0, 10, 200, 300, 400 ]
+            <pre class="output">[ 0, 10, 200, 300, 400, 40 ]
 </pre>
         
     
@@ -1433,7 +1433,7 @@ my_array;</code></pre>
         
     
         
-            <pre class="output">[ 0, 200, 300, 400 ]
+            <pre class="output">[ 0, 200, 300, 400, 40 ]
 </pre>
         
     
@@ -1443,7 +1443,7 @@ my_array;</code></pre>
         
     
         
-            <pre class="output">[ 0, 200, 300, 999, 400 ]
+            <pre class="output">[ 0, 200, 300, 999, 400, 40 ]
 </pre>
         
     

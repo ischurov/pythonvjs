@@ -325,7 +325,7 @@
         \what \lang en
             Splice modifications
         \python
-            my_list = [0, 10, 20, 30]
+            my_list = [0, 10, 20, 30, 40]
             my_list[2:4] = [200, 300, 400]
             \out my_list
             my_list[1:2] = []
@@ -333,7 +333,7 @@
             my_list[3:3] = [999]
             \out my_list
         \js
-            var my_array = [0, 10, 20, 30];
+            var my_array = [0, 10, 20, 30, 40];
             var deleted;
             deleted = my_array.splice(2, 2, 200, 300, 400);
             \out my_array
