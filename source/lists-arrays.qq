@@ -21,7 +21,7 @@
             my_list = [3, 2, 10, "Hello"]
             \out my_list
         \js
-            var my_array = [3, 2, 10, "Hello"]
+            var my_array = [3, 2, 10, "Hello"];
             \out my_array
     \compare
         \id index-access
@@ -35,7 +35,7 @@
             \out my_list[1]
             \out my_list[-1]
         \js
-            var my_array = [3, 2, 10, "Hello"]
+            var my_array = [3, 2, 10, "Hello"];
             \out my_array[0]
             \out my_array[1]
             \out my_array[my_array.length-1]
@@ -49,7 +49,7 @@
             my_list = [2, 3, 10]
             my_list["0"]
         \js
-            var my_array = [2, 3, 10]
+            var my_array = [2, 3, 10];
             \out my_array["0"]
             \comment \lang ru
                 В JavaScript массивы являются частным случаем объектов,
@@ -70,8 +70,8 @@
             my_list[0] = 100
             \out my_list
         \js
-            var my_array = [3, 2, 10, "Hello"]
-            my_array[0] = 100
+            var my_array = [3, 2, 10, "Hello"];
+            my_array[0] = 100;
             \out my_array
     \compare
         \id length
@@ -83,7 +83,7 @@
             my_list = [3, 2, 10, "Hello"]
             \out len(my_list)
         \js
-            var my_array = [3, 2, 10, "Hello"]
+            var my_array = [3, 2, 10, "Hello"];
             \out my_array.length
     \compare
         \id appending
@@ -96,8 +96,8 @@
             my_list.append(5)
             \out my_list
         \js
-            var my_array = [3, 2, 10, "Hello"]
-            my_array.push(5)
+            var my_array = [3, 2, 10, "Hello"];
+            my_array.push(5);
             \out my_array
     \compare
         \id appending-several
@@ -110,8 +110,8 @@
             my_list.extend([12, 20])
             \out my_list
         \js
-            var my_array = [3, 2]
-            my_array.push(12, 20)
+            var my_array = [3, 2];
+            my_array.push(12, 20);
             \out my_array
     \compare
         \id extending
@@ -125,15 +125,15 @@
             my_list.extend(other_list)
             \out my_list
         \js
-            var my_array = [3, 2, 10, "Hello"]
-            var other_array = [1, 2, 3]
-            my_array.push.apply(my_array, other_array)
+            var my_array = [3, 2, 10, "Hello"];
+            var other_array = [1, 2, 3];
+            my_array.push.apply(my_array, other_array);
             \out my_array
             \ref http://stackoverflow.com/a/1374131/3025981
         \js
-            var my_array = [3, 2, 10, "Hello"]
-            var other = [1, 2, 3]
-            Array.prototype.push.apply(my_array, other)
+            var my_array = [3, 2, 10, "Hello"];
+            var other = [1, 2, 3];
+            Array.prototype.push.apply(my_array, other);
             \out my_array
             \ref http://stackoverflow.com/a/1374131/3025981
         \js
@@ -142,12 +142,12 @@
                  * check whether other_array really 
                  * is an array */
                 other.forEach(function(v) {
-                    this.push(v)
+                    this.push(v);
                 }, this);    
             }
-            var my_array = [3, 2, 10, "Hello"]
-            var other_array = [1, 2, 3]
-            my_array.extend(other_array)
+            var my_array = [3, 2, 10, "Hello"];
+            var other_array = [1, 2, 3];
+            my_array.extend(other_array);
             \out my_array
             \ref http://stackoverflow.com/a/17368101/3025981
             \comment \lang ru
@@ -161,10 +161,10 @@
                 discussed here, in this case we do not pass elements of
                 `other_array` as arguments of a function.
         \js \require es6
-            var my_array = [3, 2, 10, "Hello"]
-            var other_array = [1, 2, 3]
-            my_array.push(...other_array)
-            my_array
+            var my_array = [3, 2, 10, "Hello"];
+            var other_array = [1, 2, 3];
+            my_array.push(...other_array);
+            \out my_array
             \ref 
                 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator#A_better_push
             \seealso unpacking

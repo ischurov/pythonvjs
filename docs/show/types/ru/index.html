@@ -4,7 +4,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Типы
+    <title>Типы и сравнение
  — python-v-js</title>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
     <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD" crossorigin="anonymous">
@@ -97,7 +97,7 @@
         JavaScript for Pythonistas. Python for JavaScripters
     </h2>
     <h3>
-        Типы
+        Типы и сравнение
 
     </h3>
         
@@ -487,6 +487,161 @@ String(a) is equal to String(b)
            
                 <tr>
                 <td colspan="2" class="what">
+                Сравнение списков / массивов
+
+                    
+                    <a href="#lists-array-comparison" id="lists-array-comparison" class="section-link">#</a>
+                    
+                </td>
+                </tr>
+           
+        
+           
+        
+        <tr>
+            <td>
+                
+    
+        
+            <pre><code class="python">first_list = [1, 2, 3]
+second_list = [1, 2, 3]
+third_list = first_list
+first_list == second_list</code></pre>
+        
+    
+        
+            <pre class="output">True</pre>
+        
+    
+        
+            <pre><code class="python">first_list == third_list</code></pre>
+        
+    
+        
+            <pre class="output">True</pre>
+        
+    
+        
+            <pre><code class="python">first_list is second_list</code></pre>
+        
+    
+        
+            <pre class="output">False</pre>
+        
+    
+        
+            <pre><code class="python">first_list is third_list</code></pre>
+        
+    
+        
+            <pre class="output">True</pre>
+        
+    
+        
+    
+        
+    
+    
+    
+    
+        <div class="comment"><p>Списки сравниваются поэлементно. Если вы хотите убедиться, что
+две переменные указывают на один и тот же список, а не списки,
+совпадающие поэлементно, необходимо использовать оператор <code>is</code>.</p>
+</div>
+    
+    
+
+            </td>
+            <td>
+                
+    
+        
+            <pre><code class="javascript">var first_array = [1, 2, 3]
+var second_array = [1, 2, 3]
+var third_array = first_array
+first_array == second_array;</code></pre>
+        
+    
+        
+            <pre class="output">false
+</pre>
+        
+    
+        
+            <pre><code class="javascript">first_array === second_array;</code></pre>
+        
+    
+        
+            <pre class="output">false
+</pre>
+        
+    
+        
+            <pre><code class="javascript">first_array == third_array;</code></pre>
+        
+    
+        
+            <pre class="output">true
+</pre>
+        
+    
+        
+            <pre><code class="javascript">first_array === third_array;</code></pre>
+        
+    
+        
+            <pre class="output">true
+</pre>
+        
+    
+        
+            <pre><code class="javascript">first_array == &#34;1,2&#34;;</code></pre>
+        
+    
+        
+            <pre class="output">false
+</pre>
+        
+    
+        
+            <pre><code class="javascript">first_array === &#34;1,2&#34;;</code></pre>
+        
+    
+        
+            <pre class="output">false
+</pre>
+        
+    
+        
+    
+        
+    
+    
+    
+    
+        <div class="comment"><p>Если оба аргумента оператора сравнения (<code>==</code> или <code>===</code>) являются
+массивами (или любыми другими объектами), то результат сравнения
+является истиной только в том случае, когда оба аргумента
+являются одним и тем же объектом. Поэлементного сравнения не
+производится. Если один из аргументов сравнения является
+строкой, а другой объектом (например, массивом), и используется
+сравнение с разрешенным приведением типов (<code>==</code>), то объект
+приводится к строковому представлению и затем сравниваются
+строковые представления. Если используется <code>===</code> и аргументы
+имеют разный тип (строка и список), то возвращает <code>false</code>. О
+том, как сделать поэлементное сравнение, см. <a href="http://stackoverflow.com/questions/7837456/how-to-compare-arrays-in-javascript">в этом
+треде</a>.</p>
+</div>
+    
+    
+
+            </td>
+        </tr>
+    
+        
+           
+                <tr>
+                <td colspan="2" class="what">
                 Числовые типы
 
                     
@@ -695,7 +850,7 @@ my_array[b];</code></pre>
     
     <li>
 <a href="/pythonvjs/show/types/ru/">
-    Типы
+    Типы и сравнение
 
 </a>
     </li>

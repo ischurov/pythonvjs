@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Types
+    <title>Types and comparison
  — python-v-js</title>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
     <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD" crossorigin="anonymous">
@@ -97,7 +97,7 @@
         JavaScript for Pythonistas. Python for JavaScripters
     </h2>
     <h3>
-        Types
+        Types and comparison
 
     </h3>
         
@@ -488,6 +488,157 @@ String(a) is equal to String(b)
            
                 <tr>
                 <td colspan="2" class="what">
+                List / array comparison
+
+                    
+                    <a href="#lists-array-comparison" id="lists-array-comparison" class="section-link">#</a>
+                    
+                </td>
+                </tr>
+           
+        
+        <tr>
+            <td>
+                
+    
+        
+            <pre><code class="python">first_list = [1, 2, 3]
+second_list = [1, 2, 3]
+third_list = first_list
+first_list == second_list</code></pre>
+        
+    
+        
+            <pre class="output">True</pre>
+        
+    
+        
+            <pre><code class="python">first_list == third_list</code></pre>
+        
+    
+        
+            <pre class="output">True</pre>
+        
+    
+        
+            <pre><code class="python">first_list is second_list</code></pre>
+        
+    
+        
+            <pre class="output">False</pre>
+        
+    
+        
+            <pre><code class="python">first_list is third_list</code></pre>
+        
+    
+        
+            <pre class="output">True</pre>
+        
+    
+        
+    
+        
+    
+    
+    
+    
+        <div class="comment"><p>Lists are compared elementwise. If you want to that two
+variables point on the same list, you have to use operator <code>is</code>.</p>
+</div>
+    
+    
+
+            </td>
+            <td>
+                
+    
+        
+            <pre><code class="javascript">var first_array = [1, 2, 3]
+var second_array = [1, 2, 3]
+var third_array = first_array
+first_array == second_array;</code></pre>
+        
+    
+        
+            <pre class="output">false
+</pre>
+        
+    
+        
+            <pre><code class="javascript">first_array === second_array;</code></pre>
+        
+    
+        
+            <pre class="output">false
+</pre>
+        
+    
+        
+            <pre><code class="javascript">first_array == third_array;</code></pre>
+        
+    
+        
+            <pre class="output">true
+</pre>
+        
+    
+        
+            <pre><code class="javascript">first_array === third_array;</code></pre>
+        
+    
+        
+            <pre class="output">true
+</pre>
+        
+    
+        
+            <pre><code class="javascript">first_array == &#34;1,2&#34;;</code></pre>
+        
+    
+        
+            <pre class="output">false
+</pre>
+        
+    
+        
+            <pre><code class="javascript">first_array === &#34;1,2&#34;;</code></pre>
+        
+    
+        
+            <pre class="output">false
+</pre>
+        
+    
+        
+    
+        
+    
+    
+    
+    
+        <div class="comment"><p>If both arguments of comparison operator (either <code>==</code> or <code>===</code>)
+are arrays, <code>true</code> is returned only in the case both arguments
+point to the same object. No elementwise comparison occurs. If
+one of arguments is string and another is object, and <code>==</code>
+operator is used, then object is coerced to string and they are
+compared as strings. If <code>===</code> is used and arguments have
+different types (string and array), then <code>false</code> is returned.
+You can find some recipes on how to compare two arrays
+elementwise <a href="http://stackoverflow.com/questions/7837456/how-to-compare-arrays-in-javascript">here</a>.</p>
+</div>
+    
+    
+
+            </td>
+        </tr>
+    
+        
+           
+        
+           
+                <tr>
+                <td colspan="2" class="what">
                 Numeric types
 
                     
@@ -693,7 +844,7 @@ points.</p>
     
     <li>
 <a href="/pythonvjs/show/types/en/">
-    Types
+    Types and comparison
 
 </a>
     </li>

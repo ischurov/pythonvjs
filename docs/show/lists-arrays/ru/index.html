@@ -150,7 +150,7 @@ my_list</code></pre>
                 
     
         
-            <pre><code class="javascript">var my_array = [3, 2, 10, &#34;Hello&#34;]
+            <pre><code class="javascript">var my_array = [3, 2, 10, &#34;Hello&#34;];
 my_array;</code></pre>
         
     
@@ -221,7 +221,7 @@ my_list[0]</code></pre>
                 
     
         
-            <pre><code class="javascript">var my_array = [3, 2, 10, &#34;Hello&#34;]
+            <pre><code class="javascript">var my_array = [3, 2, 10, &#34;Hello&#34;];
 my_array[0];</code></pre>
         
     
@@ -297,7 +297,7 @@ list indices must be integers or slices, not str
                 
     
         
-            <pre><code class="javascript">var my_array = [2, 3, 10]
+            <pre><code class="javascript">var my_array = [2, 3, 10];
 my_array[&#34;0&#34;];</code></pre>
         
     
@@ -362,8 +362,8 @@ my_list</code></pre>
                 
     
         
-            <pre><code class="javascript">var my_array = [3, 2, 10, &#34;Hello&#34;]
-my_array[0] = 100
+            <pre><code class="javascript">var my_array = [3, 2, 10, &#34;Hello&#34;];
+my_array[0] = 100;
 my_array;</code></pre>
         
     
@@ -418,7 +418,7 @@ len(my_list)</code></pre>
                 
     
         
-            <pre><code class="javascript">var my_array = [3, 2, 10, &#34;Hello&#34;]
+            <pre><code class="javascript">var my_array = [3, 2, 10, &#34;Hello&#34;];
 my_array.length;</code></pre>
         
     
@@ -474,8 +474,8 @@ my_list</code></pre>
                 
     
         
-            <pre><code class="javascript">var my_array = [3, 2, 10, &#34;Hello&#34;]
-my_array.push(5)
+            <pre><code class="javascript">var my_array = [3, 2, 10, &#34;Hello&#34;];
+my_array.push(5);
 my_array;</code></pre>
         
     
@@ -531,8 +531,8 @@ my_list</code></pre>
                 
     
         
-            <pre><code class="javascript">var my_array = [3, 2]
-my_array.push(12, 20)
+            <pre><code class="javascript">var my_array = [3, 2];
+my_array.push(12, 20);
 my_array;</code></pre>
         
     
@@ -589,9 +589,9 @@ my_list</code></pre>
                 
     
         
-            <pre><code class="javascript">var my_array = [3, 2, 10, &#34;Hello&#34;]
-var other_array = [1, 2, 3]
-my_array.push.apply(my_array, other_array)
+            <pre><code class="javascript">var my_array = [3, 2, 10, &#34;Hello&#34;];
+var other_array = [1, 2, 3];
+my_array.push.apply(my_array, other_array);
 my_array;</code></pre>
         
     
@@ -613,9 +613,9 @@ my_array;</code></pre>
 
     
         
-            <pre><code class="javascript">var my_array = [3, 2, 10, &#34;Hello&#34;]
-var other = [1, 2, 3]
-Array.prototype.push.apply(my_array, other)
+            <pre><code class="javascript">var my_array = [3, 2, 10, &#34;Hello&#34;];
+var other = [1, 2, 3];
+Array.prototype.push.apply(my_array, other);
 my_array;</code></pre>
         
     
@@ -642,12 +642,12 @@ my_array;</code></pre>
      * check whether other_array really 
      * is an array */
     other.forEach(function(v) {
-        this.push(v)
+        this.push(v);
     }, this);    
 }
-var my_array = [3, 2, 10, &#34;Hello&#34;]
-var other_array = [1, 2, 3]
-my_array.extend(other_array)
+var my_array = [3, 2, 10, &#34;Hello&#34;];
+var other_array = [1, 2, 3];
+my_array.extend(other_array);
 my_array;</code></pre>
         
     
@@ -681,14 +681,19 @@ my_array;</code></pre>
         
     
         
-    
+            <pre><code class="javascript">var my_array = [3, 2, 10, &#34;Hello&#34;];
+var other_array = [1, 2, 3];
+my_array.push(...other_array);
+my_array;</code></pre>
         
     
         
-            <pre><code class="javascript">var my_array = [3, 2, 10, &#34;Hello&#34;]
-var other_array = [1, 2, 3]
-my_array.push(...other_array)
-my_array</code></pre>
+            <pre class="output">[ 3, 2, 10, &#39;Hello&#39;, 1, 2, 3 ]
+</pre>
+        
+    
+        
+    
         
     
     
@@ -1532,7 +1537,7 @@ my_array;</code></pre>
     
     <li>
 <a href="/pythonvjs/show/types/ru/">
-    Типы
+    Типы и сравнение
 
 </a>
     </li>
