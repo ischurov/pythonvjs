@@ -20,9 +20,25 @@
         \python
             my_list = [3, 2, 10, "Hello"]
             \out my_list
+        \python
+            my_list = list('Hello!')
+            \out my_list
         \js
             var my_array = [3, 2, 10, "Hello"];
             \out my_array
+        \js
+            var my_array = new Array(1, 2, 3, "Hello");
+            \out my_array
+            var my_array = new Array(4);
+            \out my_array
+            var my_array = new Array("4");
+            \out my_array
+            var my_array = new Array("Hello!");
+            \out my_array
+            \comment \lang ru
+                В JavaScript массивы можно создавать, используя конструктор new. Если конструктор получает в качестве аргумента одно целое число, то это число принимается за длину массива, который нужно создать. В иных случаях (несколько аргументов, аргумент-строка) создается массив, элементами которого являются перечисленные аргументы.
+            \comment \lang en
+                In JavaScript, one can use 'new' constructor to create an Array. If the constructor receives an integer as the only argument, that integer is interpreted as the length of a newly created Array. In other cases (several arguments, one string argument), the arguments become the elements of a newly created Array.
     \compare
         \id index-access
         \what \lang ru
