@@ -144,6 +144,23 @@ my_list</code></pre>
     
     
     
+        <hr/>
+    
+
+    
+        
+            <pre><code class="python">my_list = list(&#39;Hello!&#39;)
+my_list</code></pre>
+        
+    
+        
+            <pre class="output">[&#39;H&#39;, &#39;e&#39;, &#39;l&#39;, &#39;l&#39;, &#39;o&#39;, &#39;!&#39;]</pre>
+        
+    
+    
+    
+    
+    
 
             </td>
             <td>
@@ -161,6 +178,81 @@ my_array;</code></pre>
     
     
     
+    
+    
+        <hr/>
+    
+
+    
+        
+            <pre><code class="javascript">var my_array = Array(1, 2, 3, &#34;Hello&#34;);
+my_array;</code></pre>
+        
+    
+        
+            <pre class="output">[ 1, 2, 3, &#39;Hello&#39; ]
+</pre>
+        
+    
+        
+            <pre><code class="javascript">var my_array = new Array(1, 2, 3, &#34;Hello&#34;);
+my_array;</code></pre>
+        
+    
+        
+            <pre class="output">[ 1, 2, 3, &#39;Hello&#39; ]
+</pre>
+        
+    
+        
+            <pre><code class="javascript">var my_array = new Array(4);
+my_array;</code></pre>
+        
+    
+        
+            <pre class="output">[ , , ,  ]
+</pre>
+        
+    
+        
+            <pre><code class="javascript">var my_array = new Array(&#34;4&#34;);
+my_array;</code></pre>
+        
+    
+        
+            <pre class="output">[ &#39;4&#39; ]
+</pre>
+        
+    
+        
+            <pre><code class="javascript">var my_array = new Array(&#34;Hello!&#34;);
+my_array;</code></pre>
+        
+    
+        
+            <pre class="output">[ &#39;Hello!&#39; ]
+</pre>
+        
+    
+        
+    
+        
+    
+    
+    
+    
+        <div class="comment"><p>В JavaScript массивы можно создавать, используя функцию <code>Array</code>
+(со словом <code>new</code> или без него: эффект одинаковый). Если эта
+функция получает в качестве аргумента одно целое число, то это
+число принимается за длину массива, который нужно создать, при
+этом создаётся массив с пустыми слотами. В иных случаях
+(несколько аргументов, аргумент-строка) создается массив,
+элементами которого являются перечисленные аргументы. Из-за
+непоследовательного поведения этой функции и получающихся
+массивов с пустыми слотами этот метод является не рекомендуемым,
+подробнее см. в
+<a href="https://github.com/getify/You-Dont-Know-JS/blob/master/types%20%26%20grammar/ch3.md#array">YDKJS</a>.</p>
+</div>
     
     
 
@@ -1476,7 +1568,8 @@ my_array;</code></pre>
     
 </table>
     <div style="text-align: center; font-size: 80%; color: #aaaaaa; margin:0.5em;">
-© Ilya V. Schurov, 2017<br/>
+© Ilya V. Schurov and <a
+         href="https://github.com/ischurov/pythonvjs/graphs/contributors">contributors</a>, 2017<br/>
         Licenses: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY</a> (text),
         <a href="https://opensource.org/licenses/MIT">MIT</a> (code).<br/>
         <a href="http://github.com/ischurov/pythonvjs">contribute on github</a>
