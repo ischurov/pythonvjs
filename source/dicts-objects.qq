@@ -1,0 +1,115 @@
+\topic
+    \id dicts-objects
+    \heading \lang ru
+        Словари / объекты
+    \heading \lang en
+        Dicts / objects
+    \description \lang ru
+        Стандартная структура для хранения данных с возможностью обращения по
+        произвольному ключу (отображение) в Python называется `dict`
+        (*dictionary*, *словарь*), а в JavaScript — `object` (объект).
+    \description \lang en
+        The standard structure to store elements accessible by arbitrary keys
+        (mapping) in Python is called a `dict` (*dictionary*) and in JavaScript
+        — `object`.
+    \compare
+        \id dict-object-creation
+        \what \lang ru
+            Создание словарей / объектов
+        \what \lang en
+            Creation of dictionary / object
+        \python
+            my_dict = {'a': 10, 'b': 20}
+            \out my_dict['a']
+            my_dict.a
+        \js
+            var my_obj = {a: 10, b: 20};
+            \out my_obj['a']
+            \out my_obj.a
+            \comment \lang ru
+                Обращение через точку и через квадратные скобки работает
+                одинаково.
+            \comment \lang en
+                You can access elements of an object either with square brackets
+                or with dot-notation.
+
+        \js
+            var my_obj = {'long key': 'some value', 
+                           short_key: 'other value'}
+            \out my_obj['long key']
+            \out my_obj['short_key']
+            \out my_obj.short_key
+    \compare
+        \id modification-of-element
+        \what \lang ru
+            Модификация значения в словаре / объекте
+        \what \lang en
+            Modification of a value in dictionary / object
+        \python
+            my_dict = {'a': 10, 'b': 20}
+            my_dict['a'] = 'hello'
+            \out my_dict['a']
+        \js
+            var my_obj = {a: 10, b: 20};
+            my_obj['a'] = 'hello';
+            \out my_obj['a']
+        \js
+            var my_obj = {a: 10, b: 20};
+            my_obj.a = 'hello';
+            \out my_obj['a']
+            \comment \lang ru
+                Два способа обращения (через квадратные скобки и через точку)
+                дают один и тот же элемент.
+            \comment \lang en
+                Two ways of access (square brackets and dot-notation) gives
+                the same element.
+    \compare
+        \id non-string-keys
+        \what \lang ru
+            Нестроковые ключи
+        \what \lang en
+            Non-string keys
+        \python
+            my_dict = {}
+            my_dict[5] = 'hello'
+            my_dict['5'] = 'world'
+            \out my_dict
+        \js
+            var my_obj = {};
+            my_obj[5] = 'hello';
+            my_obj['5'] = 'world';
+            \out my_obj
+            \out my_obj[ ['5'] ]
+            \comment \lang ru
+                Ключами в объектах JavaScript могут быть только строки.
+                Любой другой ключ автоматически будет конвертирован в строку.
+            \comment \lang en
+                Keys of elements in JavaScript object has to be string. Any
+                other key will be coerced to string.
+    \compare
+        \id in-dict-obj
+        \what \lang ru
+            Проверка наличия объекта с заданным ключём
+        \what \lang en
+            Check if element with given key exists
+        \python
+            my_dict = {'a': 10, 'b': 20}
+            \out 'a' in my_dict
+        \js
+            my_obj = {a: 10, b: 20};
+            \out 'a' in my_obj
+    \compare
+        \id non-existent-key
+        \what \lang ru
+            Обращение к записи с несуществующим ключём
+        \what \lang en
+            Access to non-existent key
+        \python
+            my_dict = {'a': 10, 'b': 20}
+            my_dict['c']
+            \out my_dict.get('c')
+            \out my_dict.get('c', 'Nothing')
+        \js
+            my_obj = {'a': 10, 'b': 20};
+            \out my_obj['c']
+            \out my_obj.c

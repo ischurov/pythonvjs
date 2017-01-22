@@ -1,0 +1,209 @@
+\topic
+    \id types 
+    \heading \lang ru
+        Типы и сравнение
+    \heading \lang en
+        Types and comparison
+    \description \lang ru
+        Python и JavaScript — языки с динамической типизацией. Переменные не
+        имеют типов, но их значения — имеют.
+        Преобразование типов данных (явное и неявное) может привести к различным
+        сюрпризам, особенно если вы переходите с Python на JavaScript.
+    \description \lang en
+        Python and Javascript are both languages with dynamical types. Variables
+        do not have types but the values have. Type transformation (explicit and
+        implicit) is a common source of surprises (especially if you are
+        switching from Python to JavaScript).
+    \compare
+        \id number-string-coercion
+        \what \lang ru
+            Преобразование чисел и строк
+        \what \lang en
+            Number and string coercion
+        \python
+            a = '32'
+            b = 7
+            a + b
+            \out a * b
+        \js
+            a = '32'
+            b = 7
+            \out a + b
+            \out a - b
+            \out a * b
+            \out a / b
+    \compare 
+        \id list-array-coercion 
+        \what \lang en
+            List /array to string coercion
+        \what \lang ru
+            Неявное преобразование списка в строку
+        \python
+            first_list = [1, 2, 10]
+            second_list = [5, 3]
+            \out first_list + second_list
+        \js
+            var first_array = [1, 2, 10];
+            var second_array = [5, 3];
+            \out first_array + second_array
+            \comment \lang ru
+                Ой. Что это, Бэрримор? А вот что: если оператор `+` видит что-то, 
+                что он не может сложить (то есть не два числа), то он превращает
+                все свои аргументы в строки и дальше их конкатенирует (как
+                строки).
+            \comment \lang en
+                Ooops. What's that? If operator `+` cannot make an addition
+                (i.e. its arguments are not numbers), it coerces all the
+                arguments to strings and then concatenate it (as strings).
+        \js
+            var first_array = [1, 2, 10];
+            var second_array = [5, 3];
+            \out first_array.concat(second_array)
+    \compare
+        \id comparison-and-coercion
+        \what \lang ru
+            Сравнение и приведение типов
+        \what \lang en
+            Comparison and coercion
+        \python
+            a = '12'
+            b = 12
+            if a == b:
+                print("a is equal to b")
+            else:
+                print("a is not equal to b")
+            if str(a) == str(b):
+                print("str(a) is equal to str(b)")
+            if int(a) == int(b):
+                print("int(a) is equal to int(b)")
+        \js
+            var a = '12';
+            var b = 12;
+            if (a == b) {
+                console.log("a is equal to b",
+                            "(coercions allowed)");
+            }
+            if (a === b) {
+                console.log("a is strictly equal to b", 
+                            "(coercions are not allowed)");
+            }
+            if (Number(a) === Number(b)) {
+                console.log("Number(a) is equal", 
+                            "to Number(b)");
+            }
+            if (String(a) === String(b)) {
+                console.log("String(a) is equal", 
+                            "to String(b)");
+            }
+    \compare
+        \id edge-cases-in-comparison        
+        \what \lang ru
+            Особые случаи в сравнении
+        \what \lang en
+            Edge cases in comparison
+        \python
+            \out [] == 0
+            \out [] == False
+            \out "" == []
+            \out "" == 0
+        \js
+            \out [] == 0
+            \out [] == false
+            \out "" == []
+            \out "" == 0
+    \compare
+        \id lists-array-comparison
+        \what \lang ru
+            Сравнение списков / массивов
+        \what \lang en
+            List / array comparison
+        \python
+            first_list = [1, 2, 3]
+            second_list = [1, 2, 3]
+            third_list = first_list
+            \out first_list == second_list
+            \out first_list == third_list
+            \out first_list is second_list
+            \out first_list is third_list
+            \comment \lang ru
+                Списки сравниваются поэлементно. Если вы хотите убедиться, что
+                две переменные указывают на один и тот же список, а не просто на
+                списки, совпадающие поэлементно, необходимо использовать
+                оператор `is`.
+            \comment \lang en
+                Lists are compared elementwise. If you want to check that two
+                variables point to the same list, you have to use operator `is`. 
+        \js
+            var first_array = [1, 2, 3];
+            var second_array = [1, 2, 3];
+            var third_array = first_array;
+            \out first_array == second_array
+            \out first_array === second_array
+            \out first_array == third_array
+            \out first_array === third_array
+            \out first_array == "1,2,3"
+            \out first_array === "1,2,3"
+            \comment \lang ru
+                Если оба аргумента оператора сравнения (`==` или `===`) являются
+                массивами (или любыми другими объектами), то результат сравнения
+                является истиной только в том случае, когда оба аргумента
+                являются одним и тем же объектом. Поэлементного сравнения не
+                производится. Если один из аргументов сравнения является
+                строкой, а другой объектом (например, массивом), и используется
+                сравнение с разрешенным приведением типов (`==`), то объект
+                приводится к строковому представлению и затем сравниваются
+                строковые представления. Если используется `===` и аргументы
+                имеют разный тип (строка и список), то возвращает `false`. О
+                том, как сделать поэлементное сравнение, см. [в этом
+                треде](http://stackoverflow.com/questions/7837456/how-to-compare-arrays-in-javascript).
+            \comment \lang en
+                If both arguments of comparison operator (either `==` or `===`)
+                are arrays, `true` is returned only if both arguments
+                point to the same object. No elementwise comparison occures. If
+                one of the arguments is string and another is object, and `==`
+                operator is used, then object is coerced to string and they are
+                compared as strings. If `===` is used and arguments have
+                different types (string and array), then `false` is returned.
+                You can find some recipes on how to compare two arrays
+                elementwise [here](http://stackoverflow.com/questions/7837456/how-to-compare-arrays-in-javascript).
+    \compare
+        \id numeric-types
+        \what \lang ru
+            Числовые типы
+        \what \lang en
+            Numeric types
+        \python
+            a = 2
+            b = 2.0
+            \out type(a)
+            \out type(b)
+            \out a == b
+            \out type(a) == type(b)
+            my_list = [0, 10, 20, 30]
+            my_list[b]
+            \comment \lang ru
+                Python различает целые числа (`int`) и числа с плавающей запятой
+                (`float`). В некоторых контекстах допустимы числа одого из этих
+                типов (например, в качестве индексов списков могут выступать
+                только целые числа).
+            \comment \lang en
+                Python has integer (`int`) and floating point (`float`) numbers.
+                In some context, only one of this types is acceptable (i.e.
+                index of list has to be integer number).
+        \js
+            var a = 2;
+            var b = 2.0;
+            \out typeof(a)
+            \out typeof(b)
+            \out a === b
+            \out typeof(a) === typeof(b)
+            var my_array = [0, 10, 20, 30]
+            \out my_array[b]
+            \comment \lang ru
+                В JavaScript целые числа и числа с плавающей запятой не
+                различаются. (На самом деле, все числа являются числами с
+                плавающей запятой.)
+            \comment \lang en
+                In JavaScript, there's no distinction between integers and
+                floating point numbers. In fact, all numbers are floating
+                points.
