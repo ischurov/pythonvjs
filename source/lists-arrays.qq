@@ -27,6 +27,8 @@
             var my_array = [3, 2, 10, "Hello"];
             \out my_array
         \js
+            var my_array = Array(1, 2, 3, "Hello");
+            \out my_array
             var my_array = new Array(1, 2, 3, "Hello");
             \out my_array
             var my_array = new Array(4);
@@ -36,9 +38,27 @@
             var my_array = new Array("Hello!");
             \out my_array
             \comment \lang ru
-                В JavaScript массивы можно создавать, используя конструктор new. Если конструктор получает в качестве аргумента одно целое число, то это число принимается за длину массива, который нужно создать. В иных случаях (несколько аргументов, аргумент-строка) создается массив, элементами которого являются перечисленные аргументы.
+                В JavaScript массивы можно создавать, используя функцию `Array`
+                (со словом `new` или без него: эффект одинаковый). Если эта
+                функция получает в качестве аргумента одно целое число, то это
+                число принимается за длину массива, который нужно создать, при
+                этом создаётся массив с пустыми слотами. В иных случаях
+                (несколько аргументов, аргумент-строка) создается массив,
+                элементами которого являются перечисленные аргументы. Из-за
+                непоследовательного поведения этой функции и получающихся
+                массивов с пустыми слотами этот метод является не рекомендуемым,
+                подробнее см. в
+                [YDKJS](https://github.com/getify/You-Dont-Know-JS/blob/master/types%20%26%20grammar/ch3.md#array).
             \comment \lang en
-                In JavaScript, one can use 'new' constructor to create an Array. If the constructor receives an integer as the only argument, that integer is interpreted as the length of a newly created Array. In other cases (several arguments, one string argument), the arguments become the elements of a newly created Array.
+                In JavaScript, one can use `Array` function to create an Array
+                (with or without preceeding `new`). If this function receives
+                an integer as the only argument, that integer is interpreted as
+                the length of a newly created Array with *empty slots*.
+                In other cases (several arguments, one string argument), the
+                arguments become the elements of a newly created Array. Due to
+                inconsistent behaviour of this function and Arrays with empty
+                slots the usage of this method is strongly discouraged, see
+                [YDKJS](https://github.com/getify/You-Dont-Know-JS/blob/master/types%20%26%20grammar/ch3.md#array) for details.
     \compare
         \id index-access
         \what \lang ru
