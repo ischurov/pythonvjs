@@ -173,7 +173,7 @@
             \out my_array
             \ref http://stackoverflow.com/a/1374131/3025981
         \js
-            function extend (arr, other) {
+            function extend(arr, other) {
                 /* you should include a test to 
                  * check whether other_array really 
                  * is an array */
