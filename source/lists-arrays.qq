@@ -173,17 +173,17 @@
             \out my_array
             \ref http://stackoverflow.com/a/1374131/3025981
         \js
-            Array.prototype.extend = function (other) {
+            function extend (arr, other) {
                 /* you should include a test to 
                  * check whether other_array really 
                  * is an array */
                 other.forEach(function(v) {
-                    this.push(v);
-                }, this);    
+                    arr.push(v);
+                });
             }
             var my_array = [3, 2, 10, "Hello"];
             var other_array = [1, 2, 3];
-            my_array.extend(other_array);
+            extend(my_array, other_array);
             \out my_array
             \ref http://stackoverflow.com/a/17368101/3025981
             \comment \lang ru

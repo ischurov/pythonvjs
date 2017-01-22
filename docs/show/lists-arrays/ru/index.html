@@ -729,17 +729,17 @@ my_array;</code></pre>
 
     
         
-            <pre><code class="javascript">Array.prototype.extend = function (other) {
+            <pre><code class="javascript">function extend (arr, other) {
     /* you should include a test to 
      * check whether other_array really 
      * is an array */
     other.forEach(function(v) {
-        this.push(v);
-    }, this);    
+        arr.push(v);
+    });
 }
 var my_array = [3, 2, 10, &#34;Hello&#34;];
 var other_array = [1, 2, 3];
-my_array.extend(other_array);
+extend(my_array, other_array);
 my_array;</code></pre>
         
     

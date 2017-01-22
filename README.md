@@ -15,7 +15,7 @@ To preview, run
 python pythonvjs.py
 ```
 
-To build statis version, do
+To build static version, do
 
 ```
 python freeze.py
