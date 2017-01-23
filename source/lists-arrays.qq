@@ -20,12 +20,14 @@
         \python
             my_list = [3, 2, 10, "Hello"]
             \out my_list
-        \python
-            my_list = list('Hello!')
-            \out my_list
         \js
             var my_array = [3, 2, 10, "Hello"];
             \out my_array
+    \compare
+        \id list-creation-function 
+        \python
+            my_list = list('Hello!')
+            \out my_list
         \js
             var my_array = Array(1, 2, 3, "Hello");
             \out my_array
