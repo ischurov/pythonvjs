@@ -25,6 +25,10 @@
             \out my_array
     \compare
         \id list-creation-function 
+        \what \lang ru
+            Создание списка / массива с помощью конструктора
+        \what \lang en
+            Constructor-style creation of list / array
         \python
             my_list = list('Hello!')
             \out my_list
