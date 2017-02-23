@@ -132,7 +132,7 @@
     
         
             <pre><code class="python">def foo(x, y):
-    print(&#34;x =&#34;, x, &#34;,y =&#34;, y)
+    print(&#34;x =&#34;, x, &#34; y =&#34;, y)
 foo(2, 3)
 foo(x=2, y=3)
 foo(y=2, x=3)
@@ -140,9 +140,9 @@ foo(y=2, x=3)
         
     
         
-            <pre class="output">x = 2 ,y = 3
-x = 2 ,y = 3
-x = 3 ,y = 2
+            <pre class="output">x = 2  y = 3
+x = 2  y = 3
+x = 3  y = 2
 </pre>
         
     
@@ -156,47 +156,27 @@ x = 3 ,y = 2
                 
     
         
+    
+        
+    
+        
             <pre><code class="javascript">function foo(x, y) {
-    console.log(&#34;x = &#34; + x + &#34;, y = &#34; + y)
+    console.log(&#34;x = &#34; + x + &#34; y = &#34; + y)
 }
 foo(2, 3);
 foo(x=2, y=3);
-foo(y=2, x=3);</code></pre>
+foo(y=2, x=3);
+console.log(x);
+console.log(y);</code></pre>
         
     
         
-            <pre class="output">x = 2, y = 3
-x = 2, y = 3
-x = 2, y = 3
-</pre>
-        
-    
-        
-            <pre><code class="javascript">x;</code></pre>
-        
-    
-        
-            <pre class="output">x = 2, y = 3
-x = 2, y = 3
-x = 2, y = 3
+            <pre class="output">x = 2 y = 3
+x = 2 y = 3
+x = 2 y = 3
 3
-</pre>
-        
-    
-        
-            <pre><code class="javascript">y;</code></pre>
-        
-    
-        
-            <pre class="output">x = 2, y = 3
-x = 2, y = 3
-x = 2, y = 3
 2
 </pre>
-        
-    
-        
-    
         
     
     
@@ -222,13 +202,13 @@ y=3)</code> на самом деле <code>x=2</code> осуществляют �
     
         
             <pre><code class="javascript">function foo(args) {
-    console.log(&#34;x = &#34; + args.x + &#34;, y = &#34; + args.y);
+    console.log(&#34;x = &#34; + args.x + &#34; y = &#34; + args.y);
 }
 foo({x: 2, y: 3})</code></pre>
         
     
         
-            <pre class="output">x = 2, y = 3
+            <pre class="output">x = 2 y = 3
 </pre>
         
     

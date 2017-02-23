@@ -18,19 +18,19 @@
             Named parameters
         \python
             def foo(x, y):
-                print("x =", x, ",y =", y)
+                print("x =", x, " y =", y)
             foo(2, 3)
             foo(x=2, y=3)
             foo(y=2, x=3)
         \js
             function foo(x, y) {
-                console.log("x = " + x + ", y = " + y)
+                console.log("x = " + x + " y = " + y)
             }
             foo(2, 3);
             foo(x=2, y=3);
             foo(y=2, x=3);
-            \out x
-            \out y
+            console.log(x);
+            console.log(y);
             \comment \lang ru
                 У вас может возникнуть искушение использовать синтаксис, похожий
                 на Python, для передачи аргументов функции. К сожалению, в
@@ -55,7 +55,7 @@
                 `x` and `y`.
         \js
             function foo(args) {
-                console.log("x = " + args.x + ", y = " + args.y);
+                console.log("x = " + args.x + " y = " + args.y);
             }
             foo({x: 2, y: 3})
 
