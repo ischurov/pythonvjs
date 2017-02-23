@@ -1,0 +1,61 @@
+\topic
+    \id functions
+    \heading \lang ru
+        Функции
+    \heading \lang en
+        Functions
+    \description \lang ru
+        Функции определяются в Python и JavaScript похожим образом, но с
+        некоторыми тонкими различиями.
+    \description \lang en
+        Functions are defined in Python and JavaScript in a similar way, but
+        with subtle differences.
+    \compare 
+        \id named-parameters
+        \what \lang ru
+            Именованные параметры
+        \what \lang en
+            Named parameters
+        \python
+            def foo(x, y):
+                print("x =", x, ",y =", y)
+            foo(2, 3)
+            foo(x=2, y=3)
+            foo(y=2, x=3)
+        \js
+            function foo(x, y) {
+                console.log("x = " + x + ", y = " + y)
+            }
+            foo(2, 3);
+            foo(x=2, y=3);
+            foo(y=2, x=3);
+            \out x
+            \out y
+            \comment \lang ru
+                У вас может возникнуть искушение использовать синтаксис, похожий
+                на Python, для передачи аргументов функции. К сожалению, в
+                JavaScript он не сработает, поскольку JS не поддерживает
+                именованные параметры функций. При выполнении строчки `foo(x=2,
+                y=3)` на самом деле `x=2` осуществляют операцию присваивания
+                переменной `x` значения `2`, а `y=3` — переменной `y` значения
+                `3` (в области видимости, из которой функция вызывается). При
+                этом операции присваивания в JS возвращают значение (равное
+                присвоенной величине), поэтому эта строчка сработает как `foo(2,
+                3)`. Следующая строчка сработает точно так же, несмотря на то,
+                что `x` и `y` поменялись местами.
+            \comment \lang en
+                You may be tempted to use a Pythonic syntax on named function
+                arguments in Javascript. Unfortunately, it won't work. Moreover,
+                JS doesn't support named function arguments at all. Line
+                `foo(x=2, y=3)` in fact executes three commands: `x=2`, `y=3`
+                and then `foo(2, 3)`, so variables `x` and `y` in the calling
+                scope will be created/updated. Assignment operator returns the
+                value, so the function will be called as `foo(2, 3)`. The next
+                line will call `foo` in the same way regardless of swapping of
+                `x` and `y`.
+        \js
+            function foo(args) {
+                console.log("x = " + args.x + ", y = " + args.y);
+            }
+            foo({x: 2, y: 3})
+
