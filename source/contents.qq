@@ -3,3 +3,4 @@
 \include dicts-objects.qq
 \include scopes.qq
 \include types.qq
+\include functions.qq

@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Scopes
+    <title>Functions
  — python-v-js</title>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
     <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD" crossorigin="anonymous">
@@ -97,13 +97,12 @@
         JavaScript for Pythonistas. Python for JavaScripters
     </h2>
     <h3>
-        Scopes
+        Functions
 
     </h3>
         
-        <p>Variable names (including function names) in Python and JavaScript can
-belong to different scopes. For example, local variable defined inside
-function is not accessible from outside of a function.</p>
+        <p>Functions are defined in Python and JavaScript in a similar way, but
+with subtle differences.</p>
 
         
 <table class="pure-table">
@@ -118,10 +117,10 @@ function is not accessible from outside of a function.</p>
            
                 <tr>
                 <td colspan="2" class="what">
-                Default variable scope
+                Named parameters
 
                     
-                    <a href="#default-variable-scope" id="default-variable-scope" class="section-link">#</a>
+                    <a href="#named-parameters" id="named-parameters" class="section-link">#</a>
                     
                 </td>
                 </tr>
@@ -132,63 +131,23 @@ function is not accessible from outside of a function.</p>
                 
     
         
-            <pre><code class="python">x = 1
-def fun():
-    x = 2
-    print(&#34;Inside function, x =&#34;, x)
-fun()
-print(&#34;Outside function, x =&#34;, x)
+            <pre><code class="python">def foo(x, y):
+    print(&#34;x =&#34;, x, &#34;,y =&#34;, y)
+foo(2, 3)
+foo(x=2, y=3)
+foo(y=2, x=3)
 </code></pre>
         
     
         
-            <pre class="output">Inside function, x = 2
-Outside function, x = 1
+            <pre class="output">x = 2 ,y = 3
+x = 2 ,y = 3
+x = 3 ,y = 2
 </pre>
         
     
-        
-    
-        
     
     
-    
-    
-        <div class="comment"><p>By default, variable declared inside a function is a local one.</p>
-</div>
-    
-    
-        <hr/>
-    
-
-    
-        
-            <pre><code class="python">x = 1
-def fun():
-    global x
-    x = 2
-    print(&#34;Inside function, x =&#34;, x)
-fun()
-print(&#34;Outside function, x =&#34;, x)
-</code></pre>
-        
-    
-        
-            <pre class="output">Inside function, x = 2
-Outside function, x = 2
-</pre>
-        
-    
-        
-    
-        
-    
-    
-    
-    
-        <div class="comment"><p>To be able to modify the global variable inside a function one
-have to use <code>global</code> command.</p>
-</div>
     
     
 
@@ -197,31 +156,61 @@ have to use <code>global</code> command.</p>
                 
     
         
-    
-        
-    
-        
-            <pre><code class="javascript">x = 1;
-function fun() {
-    x = 2;
-    console.log(&#34;Inside function, x =&#34;, x)
+            <pre><code class="javascript">function foo(x, y) {
+    console.log(&#34;x = &#34; + x + &#34;, y = &#34; + y)
 }
-fun();
-console.log(&#34;Outside function, x =&#34;, x)</code></pre>
+foo(2, 3);
+foo(x=2, y=3);
+foo(y=2, x=3);</code></pre>
         
     
         
-            <pre class="output">Inside function, x = 2
-Outside function, x = 2
+            <pre class="output">x = 2, y = 3
+x = 2, y = 3
+x = 2, y = 3
 </pre>
         
     
+        
+            <pre><code class="javascript">x;</code></pre>
+        
+    
+        
+            <pre class="output">x = 2, y = 3
+x = 2, y = 3
+x = 2, y = 3
+3
+</pre>
+        
+    
+        
+            <pre><code class="javascript">y;</code></pre>
+        
+    
+        
+            <pre class="output">x = 2, y = 3
+x = 2, y = 3
+x = 2, y = 3
+2
+</pre>
+        
+    
+        
+    
+        
     
     
     
-        <div class="comment"><p>If one creates variable inside a function in JavaScript, by
-default it is a global variable. To declare a local variable,
-one have to use command <code>var</code>.</p>
+    
+        <div class="comment"><p>You may be tempted to use a Pythonic syntax on named function
+arguments in Javascript. Unfortunately, it won't work. Moreover,
+JS doesn't support named function arguments at all. Line
+<code>foo(x=2, y=3)</code> in fact executes three commands: <code>x=2</code>, <code>y=3</code>
+and then <code>foo(2, 3)</code>, so variables <code>x</code> and <code>y</code> in the calling
+scope will be created/updated. Assignment operator returns the
+value, so the function will be called as <code>foo(2, 3)</code>. The next
+line will call <code>foo</code> in the same way regardless of swapping of
+<code>x</code> and <code>y</code>.</p>
 </div>
     
     
@@ -230,58 +219,19 @@ one have to use command <code>var</code>.</p>
 
     
         
-            <pre><code class="javascript">x = 1; // global x
-function fun() {
-    var x = 2; // local x
-    console.log(&#34;Inside function, x =&#34;, x)
+            <pre><code class="javascript">function foo(args) {
+    console.log(&#34;x = &#34; + args.x + &#34;, y = &#34; + args.y);
 }
-fun();
-console.log(&#34;Outside function, x =&#34;, x)</code></pre>
+foo({x: 2, y: 3})</code></pre>
         
     
         
-            <pre class="output">Inside function, x = 2
-Outside function, x = 1
+            <pre class="output">x = 2, y = 3
 </pre>
         
     
     
     
-    
-    
-        <hr/>
-    
-
-    
-        
-    
-        
-    
-        
-            <pre><code class="javascript">function sum_of_numbers(k) {
-    var s=0;
-    for (i=0; i&lt;k; i++) {
-        s += i
-    }
-    return s
-}
-i = 5;
-console.log(&#34;Sum of numbers from 1 to 100 is&#34;, 
-            sum_of_numbers(101));
-console.log(&#34;And i =&#34;, i);</code></pre>
-        
-    
-        
-            <pre class="output">Sum of numbers from 1 to 100 is 5050
-And i = 101
-</pre>
-        
-    
-    
-    
-    
-        <div class="comment"><p>We forgot to declare variable <code>i</code> — and here is the result.</p>
-</div>
     
     
 
@@ -303,13 +253,13 @@ And i = 101
 <ul>
     
     <li>
-        <a href="/pythonvjs/show/scopes/en/">
+        <a href="/pythonvjs/show/functions/en/">
             English
         </a>
     </li>
     
     <li>
-        <a href="/pythonvjs/show/scopes/ru/">
+        <a href="/pythonvjs/show/functions/ru/">
             Russian
         </a>
     </li>
