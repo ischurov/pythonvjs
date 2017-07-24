@@ -210,6 +210,22 @@
             \ref 
                 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator#A_better_push
             \seealso unpacking
+    \compare 
+        \id concatenate
+        \what \lang ru
+            Конкатенация
+        \what \lang en
+            Concatenation
+        \python
+            first_list = [1, 2, 3]
+            second_list = ["Hello", "World"]
+            new_list = first_list + second_list
+            \out new_list
+        \js
+            first_array = [1, 2, 3];
+            second_array = ["Hello", "World"];
+            new_array = first_array.concat(second_array);
+            \out new_array
     \compare
         \id deleting-element
         \what \lang ru

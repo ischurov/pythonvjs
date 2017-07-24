@@ -1,4 +1,4 @@
-from qqmbr.ml import QqParser, QqTag
+from indentml.parser import QqParser, QqTag
 from flask import Flask, render_template
 import os
 import sys
