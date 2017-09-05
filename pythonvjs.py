@@ -39,11 +39,9 @@ def show(lang, filename):
     source_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                         "source")
 
-    parser.include_dir = source_dir
     path = os.path.join(source_dir, "contents.qq")
 
-    with open(path) as f:
-        tree = parser.parse(f.readlines())
+    tree = parser.parse_file(path).process_include_tags(parser, source_dir)
 
     if filename:
         topic = [t for t in tree.find_all("topic") if t._id.value == filename][0]
