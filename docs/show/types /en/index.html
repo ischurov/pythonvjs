@@ -1,11 +1,10 @@
 
 
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Типы и сравнение
- — python-v-js</title>
+    <title>Types and comparison — python-v-js</title>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
     <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD" crossorigin="anonymous">
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
@@ -97,14 +96,13 @@
         JavaScript for Pythonistas. Python for JavaScripters
     </h2>
     <h3>
-        Типы и сравнение
-
+        Types and comparison
     </h3>
         
-        <p>Python и JavaScript — языки с динамической типизацией. Переменные не
-имеют типов, но их значения — имеют.
-Преобразование типов данных (явное и неявное) может привести к различным
-сюрпризам, особенно если вы переходите с Python на JavaScript.</p>
+        <p>Python and Javascript are both languages with dynamical types. Variables
+do not have types but the values have. Type transformation (explicit and
+implicit) is a common source of surprises (especially if you are
+switching from Python to JavaScript).</p>
 
         
 <table class="pure-table">
@@ -115,17 +113,16 @@
     
         
            
+        
+           
                 <tr>
                 <td colspan="2" class="what">
-                Преобразование чисел и строк
-
+                Number and string coercion
                     
                     <a href="#number-string-coercion" id="number-string-coercion" class="section-link">#</a>
                     
                 </td>
                 </tr>
-           
-        
            
         
         <tr>
@@ -141,7 +138,7 @@ a + b
     
         
             <pre class="output">Exception: TypeError
-must be str, not int
+can only concatenate str (not &#34;int&#34;) to str
 </pre>
         
     
@@ -164,8 +161,7 @@ must be str, not int
     
         
             <pre><code class="javascript">a = &#39;32&#39;
-b = 7
-a + b;</code></pre>
+b = 7a + b;</code></pre>
         
     
         
@@ -210,17 +206,16 @@ a + b;</code></pre>
     
         
            
-        
-           
                 <tr>
                 <td colspan="2" class="what">
-                Неявное преобразование списка в строку
-
+                List /array to string coercion
                     
-                    <a href="#list-array-coercion" id="list-array-coercion" class="section-link">#</a>
+                    <a href="#list-array-coercion " id="list-array-coercion " class="section-link">#</a>
                     
                 </td>
                 </tr>
+           
+        
            
         
         <tr>
@@ -248,8 +243,7 @@ first_list + second_list</code></pre>
     
         
             <pre><code class="javascript">var first_array = [1, 2, 10];
-var second_array = [5, 3];
-first_array + second_array;</code></pre>
+var second_array = [5, 3];first_array + second_array;</code></pre>
         
     
         
@@ -264,10 +258,9 @@ first_array + second_array;</code></pre>
     
     
     
-        <div class="comment"><p>Ой. Что это, Бэрримор? А вот что: если оператор <code>+</code> видит что-то, 
-что он не может сложить (то есть не два числа), то он превращает
-все свои аргументы в строки и дальше их конкатенирует (как
-строки).</p>
+        <div class="comment"><p>Ooops. What's that? If operator <code>+</code> cannot make an addition
+(i.e. its arguments are not numbers), it coerces all the
+arguments to strings and then concatenate it (as strings).</p>
 </div>
     
     
@@ -277,8 +270,7 @@ first_array + second_array;</code></pre>
     
         
             <pre><code class="javascript">var first_array = [1, 2, 10];
-var second_array = [5, 3];
-first_array.concat(second_array);</code></pre>
+var second_array = [5, 3];first_array.concat(second_array);</code></pre>
         
     
         
@@ -296,17 +288,16 @@ first_array.concat(second_array);</code></pre>
     
         
            
+        
+           
                 <tr>
                 <td colspan="2" class="what">
-                Сравнение и приведение типов
-
+                Comparison and coercion
                     
                     <a href="#comparison-and-coercion" id="comparison-and-coercion" class="section-link">#</a>
                     
                 </td>
                 </tr>
-           
-        
            
         
         <tr>
@@ -381,17 +372,16 @@ String(a) is equal to String(b)
     
         
            
+        
+           
                 <tr>
                 <td colspan="2" class="what">
-                Особые случаи в сравнении
-
+                Edge cases in comparison
                     
-                    <a href="#edge-cases-in-comparison" id="edge-cases-in-comparison" class="section-link">#</a>
+                    <a href="#edge-cases-in-comparison        " id="edge-cases-in-comparison        " class="section-link">#</a>
                     
                 </td>
                 </tr>
-           
-        
            
         
         <tr>
@@ -485,17 +475,16 @@ String(a) is equal to String(b)
     
         
            
+        
+           
                 <tr>
                 <td colspan="2" class="what">
-                Сравнение списков / массивов
-
+                List / array comparison
                     
                     <a href="#lists-array-comparison" id="lists-array-comparison" class="section-link">#</a>
                     
                 </td>
                 </tr>
-           
-        
            
         
         <tr>
@@ -544,10 +533,8 @@ first_list == second_list</code></pre>
     
     
     
-        <div class="comment"><p>Списки сравниваются поэлементно. Если вы хотите убедиться, что
-две переменные указывают на один и тот же список, а не просто на
-списки, совпадающие поэлементно, необходимо использовать
-оператор <code>is</code>.</p>
+        <div class="comment"><p>Lists are compared elementwise. If you want to check that two
+variables point to the same list, you have to use operator <code>is</code>.</p>
 </div>
     
     
@@ -559,8 +546,7 @@ first_list == second_list</code></pre>
         
             <pre><code class="javascript">var first_array = [1, 2, 3];
 var second_array = [1, 2, 3];
-var third_array = first_array;
-first_array == second_array;</code></pre>
+var third_array = first_array;first_array == second_array;</code></pre>
         
     
         
@@ -620,18 +606,15 @@ first_array == second_array;</code></pre>
     
     
     
-        <div class="comment"><p>Если оба аргумента оператора сравнения (<code>==</code> или <code>===</code>) являются
-массивами (или любыми другими объектами), то результат сравнения
-является истиной только в том случае, когда оба аргумента
-являются одним и тем же объектом. Поэлементного сравнения не
-производится. Если один из аргументов сравнения является
-строкой, а другой объектом (например, массивом), и используется
-сравнение с разрешенным приведением типов (<code>==</code>), то объект
-приводится к строковому представлению и затем сравниваются
-строковые представления. Если используется <code>===</code> и аргументы
-имеют разный тип (строка и список), то возвращает <code>false</code>. О
-том, как сделать поэлементное сравнение, см. <a href="http://stackoverflow.com/questions/7837456/how-to-compare-arrays-in-javascript">в этом
-треде</a>.</p>
+        <div class="comment"><p>If both arguments of comparison operator (either <code>==</code> or <code>===</code>)
+are arrays, <code>true</code> is returned only if both arguments
+point to the same object. No elementwise comparison occures. If
+one of the arguments is string and another is object, and <code>==</code>
+operator is used, then object is coerced to string and they are
+compared as strings. If <code>===</code> is used and arguments have
+different types (string and array), then <code>false</code> is returned.
+You can find some recipes on how to compare two arrays
+elementwise <a href="http://stackoverflow.com/questions/7837456/how-to-compare-arrays-in-javascript">here</a>.</p>
 </div>
     
     
@@ -641,17 +624,16 @@ first_array == second_array;</code></pre>
     
         
            
+        
+           
                 <tr>
                 <td colspan="2" class="what">
-                Числовые типы
-
+                Numeric types
                     
                     <a href="#numeric-types" id="numeric-types" class="section-link">#</a>
                     
                 </td>
                 </tr>
-           
-        
            
         
         <tr>
@@ -711,10 +693,9 @@ list indices must be integers or slices, not float
     
     
     
-        <div class="comment"><p>Python различает целые числа (<code>int</code>) и числа с плавающей запятой
-(<code>float</code>). В некоторых контекстах допустимы числа одого из этих
-типов (например, в качестве индексов списков могут выступать
-только целые числа).</p>
+        <div class="comment"><p>Python has integer (<code>int</code>) and floating point (<code>float</code>) numbers.
+In some context, only one of this types is acceptable (i.e.
+index of list has to be integer number).</p>
 </div>
     
     
@@ -725,8 +706,7 @@ list indices must be integers or slices, not float
     
         
             <pre><code class="javascript">var a = 2;
-var b = 2.0;
-typeof(a);</code></pre>
+var b = 2.0;typeof(a);</code></pre>
         
     
         
@@ -762,8 +742,7 @@ typeof(a);</code></pre>
         
     
         
-            <pre><code class="javascript">var my_array = [0, 10, 20, 30]
-my_array[b];</code></pre>
+            <pre><code class="javascript">var my_array = [0, 10, 20, 30]my_array[b];</code></pre>
         
     
         
@@ -778,9 +757,9 @@ my_array[b];</code></pre>
     
     
     
-        <div class="comment"><p>В JavaScript целые числа и числа с плавающей запятой не
-различаются. (На самом деле, все числа являются числами с
-плавающей запятой.)</p>
+        <div class="comment"><p>In JavaScript, there's no distinction between integers and
+floating point numbers. In fact, all numbers are floating
+points.</p>
 </div>
     
     
@@ -799,77 +778,71 @@ my_array[b];</code></pre>
 
         </div>
 <div class="pure-u-1-5 sidebar">
-<h1 class="sidebar"> Язык</h1>
+<h1 class="sidebar"> Language</h1>
 <ul>
     
     <li>
-        <a href="/pythonvjs/show/types/en/">
-            Английский (English)
+        <a href="/pythonvjs/show/types%20/en/">
+            English
         </a>
     </li>
     
     <li>
-        <a href="/pythonvjs/show/types/ru/">
-            Русский (Russian)
+        <a href="/pythonvjs/show/types%20/ru/">
+            Russian
         </a>
     </li>
     
 </ul>
-<h1 class="sidebar">Темы</h1>
+<h1 class="sidebar">Topics</h1>
 <ul>
 
     <li>
-<a href="/pythonvjs/show/lists-arrays/ru/">
-    Списки / массивы
-
+<a href="/pythonvjs/show/lists-arrays/en/">
+    Lists / arrays
 </a>
     </li>
 
     
     <li>
-<a href="/pythonvjs/show/loop-for/ru/">
-    Цикл for
-
+<a href="/pythonvjs/show/loop-for/en/">
+    For loop
 </a>
     </li>
 
     
     <li>
-<a href="/pythonvjs/show/dicts-objects/ru/">
-    Словари / объекты
-
+<a href="/pythonvjs/show/dicts-objects/en/">
+    Dicts / objects
 </a>
     </li>
 
     
     <li>
-<a href="/pythonvjs/show/scopes/ru/">
-    Области видимости
-
+<a href="/pythonvjs/show/scopes/en/">
+    Scopes
 </a>
     </li>
 
     
     <li>
-<a href="/pythonvjs/show/types/ru/">
-    Типы и сравнение
-
+<a href="/pythonvjs/show/types%20/en/">
+    Types and comparison
 </a>
     </li>
 
     
     <li>
-<a href="/pythonvjs/show/functions/ru/">
-    Функции
-
+<a href="/pythonvjs/show/functions/en/">
+    Functions
 </a>
     </li>
 
     
     </ul>
-<h1 class="sidebar">Ссылки</h1>
+<h1 class="sidebar">Links</h1>
 <ul>
-    <li><a href="/">блог</a></li>
+    <li><a href="/">blog</a></li>
     <li><a href="https://twitter.com/ivoyager">twitter</a></li>
     <li><a href="https://www.facebook.com/ilyaschurov">facebook</a></li>
     <li><a href="http://github.com/ischurov/pythonvjs">github</a></li>

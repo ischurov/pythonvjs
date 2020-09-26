@@ -13,7 +13,7 @@
     {% for require in codeblock.find_all("require") %}
         <span class="require">{{ translate("require")}}: {{ require.value }}</span>
     {% endfor %}
-    {%  if codeblock._comment %}
+    {%  if codeblock.comment_ %}
         <div class="comment">{{ mistune.markdown(get_tag_lang(codeblock, "comment").text_content) | safe }}</div>
     {%  endif %}
     {% if not loop.last %}
@@ -130,12 +130,12 @@
     </tr>
     {% for compare in topic.find_all("compare") %}
         {% for what in compare.find_all("what") %}
-           {% if what._lang.value == lang %}
+           {% if what.lang_.value == lang %}
                 <tr>
                 <td colspan="2" class="what">
                 {{ what.text_content }}
-                    {% if compare._id %}
-                    <a href="#{{ compare._id.value }}" id="{{ compare._id.value }}" class="section-link">#</a>
+                    {% if compare.id_ %}
+                    <a href="#{{ compare.id_.value }}" id="{{ compare.id_.value }}" class="section-link">#</a>
                     {% endif %}
                 </td>
                 </tr>
@@ -165,7 +165,7 @@
 <ul>
     {% for lng, language in [('en', 'English'), ('ru', 'Russian')] %}
     <li>
-        <a href="{{ url_for("show", lang=lng, filename=topic._id.value) }}">
+        <a href="{{ url_for("show", lang=lng, filename=topic.id_.value) }}">
             {{  translate(language) }}
         </a>
     </li>
@@ -175,7 +175,7 @@
 <ul>
 {% for t in tree.find_all("topic") %}
     <li>
-<a href="{{ url_for("show", lang=lang, filename=t._id.value) }}">
+<a href="{{ url_for("show", lang=lang, filename=t.id_.value) }}">
     {{ get_tag_lang(t, "heading").text_content }}
 </a>
     </li>

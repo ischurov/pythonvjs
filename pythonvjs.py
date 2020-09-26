@@ -44,9 +44,9 @@ def show(lang, filename):
     tree = parser.parse_file(path).process_include_tags(parser, source_dir)
 
     if filename:
-        topic = [t for t in tree.find_all("topic") if t._id.value == filename][0]
+        topic = [t for t in tree.find_all("topic") if t.id_.value == filename][0]
     else:
-        topic = tree._topic
+        topic = tree.topic_
 
     for compare in topic.find_all("compare"):
         for prlang in ['python', 'js']:
@@ -59,11 +59,11 @@ def show(lang, filename):
         first = None
         default_lang = None
         for tag in tree.find_all(tagname):
-            if tag._lang and tag._lang.value == lang:
+            if tag.lang_.value == lang:
                 return tag
             if first is None:
                 first = tag
-            if tag._lang == DEFAULT_LANG and default_lang is None:
+            if tag.lang_.value == DEFAULT_LANG and default_lang is None:
                 default_lang = tag
         if default_lang:
             return default_lang
@@ -118,7 +118,7 @@ def strip_blank_lines(code):
 
 
 def process_python(tag: QqTag):
-    """
+    r"""
     Output:
     \_codeblock
             \_code ...(str)...
@@ -176,7 +176,7 @@ def node_exec(code):
 
 
 def process_js(tag: QqTag):
-    """
+    r"""
     Output:
     \_codeblock
         \_item

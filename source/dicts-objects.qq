@@ -89,7 +89,7 @@
     \compare
         \id in-dict-obj
         \what \lang ru
-            Проверка наличия объекта с заданным ключём
+            Проверка наличия объекта с заданным ключом
         \what \lang en
             Check if element with given key exists
         \python
@@ -101,7 +101,7 @@
     \compare
         \id non-existent-key
         \what \lang ru
-            Обращение к записи с несуществующим ключём
+            Обращение к записи с несуществующим ключом
         \what \lang en
             Access to non-existent key
         \python
